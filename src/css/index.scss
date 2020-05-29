@@ -1,0 +1,51 @@
+body {
+   
+        background-color: darkolivegreen;
+}
+
+li {
+    list-style-type: none;
+}
+
+.invisibleLogout {
+    display: none;
+}
+.invisible01 {
+    display: none;
+}
+.invisible02 {
+    display: none;
+}
+.invisible02login {
+    display: none;
+}
+.invisible02seatReservation {
+    display: none;
+}
+.invisible03 {
+    display: none;
+}
+
+
+.invisible li:nth-child(n + 2) {
+    display: none;
+}
+.visible li:nth-child(n + 2) {
+    color: black;
+    background-color: cornsilk;
+}
+
+.passengersNumber {
+    appearance: textfield; 
+}
+
+#searchButton {
+    border: 1px solid white;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+.searchBtnError {
+    color: red;
+    border: 1px solid red;
+}

@@ -1,0 +1,176 @@
+{
+    "flights": [
+        {
+            "from": "Wroclaw (WRO)",
+            "to": "Gdansk (GDN)",
+            "duration": "35 minutes",
+            "price": [
+                {
+                    "Economy Class": "25 EUR",
+                    "Premium Economy": "30 EUR",
+                    "Business Class": "35 EUR"
+                }
+            ],
+            "plane": "Bombardier",
+            "departureTimeThere": [
+                {
+                    "Mon": "09:30 am",
+                    "Tue": "11:00 am",
+                    "Wed": "08:30 am",
+                    "Thu": "06:00 am",
+                    "Fri": "07:15 am",
+                    "Sat": "09:45 am",
+                    "Sun": "10:10 am"
+                }
+            ],
+            "arrivalTimeThere": [
+                {
+                    "Mon": "10:05 am",
+                    "Tue": "11:35 am",
+                    "Wed": "09:05 am",
+                    "Thu": "07:35 am",
+                    "Fri": "07:50 am",
+                    "Sat": "10:20 am",
+                    "Sun": "10:45 am"
+                }
+            ],
+            "departureTimeBack": [
+                {
+                    "Mon": "03:30 pm",
+                    "Tue": "04:00 pm",
+                    "Wed": "05:30 pm",
+                    "Thu": "06:00 pm",
+                    "Fri": "07:15 pm",
+                    "Sat": "08:45 pm",
+                    "Sun": "09:10 pm"
+                }
+            ],
+            "arrivalTimeBack": [
+                {
+                    "Mon": "04:05 pm",
+                    "Tue": "04:35 pm",
+                    "Wed": "06:05 pm",
+                    "Thu": "07:35 pm",
+                    "Fri": "07:50 pm",
+                    "Sat": "09:20 pm",
+                    "Sun": "09:45 pm"
+                }
+            ]
+        },
+        {
+            "from": "Wroclaw (WRO)",
+            "to": "Paris (CDG)",
+            "duration": "1.5 hours",
+            "price": [
+                {
+                    "Economy Class": "60 EUR",
+                    "Premium Economy": "65 EUR",
+                    "Business Class": "70 EUR"
+                }
+            ],
+            "plane": "Boeing 737",
+            "departureTimeThere": [
+                {
+                    "Mon": "09:00 am",
+                    "Tue": "08:00 am",
+                    "Wed": "07:00 am",
+                    "Thu": "06:00 am",
+                    "Fri": "10:00 am",
+                    "Sat": "08:30 am",
+                    "Sun": "09:00 am"
+                }
+            ],
+            "arrivalTimeThere": [
+                {
+                    "Mon": "10:30 am",
+                    "Tue": "09:30 am",
+                    "Wed": "08:30 am",
+                    "Thu": "07:30 am",
+                    "Fri": "11:30 am",
+                    "Sat": "10:00 am",
+                    "Sun": "10:30 am"
+                }
+            ],
+            "departureTimeBack": [
+                {
+                    "Mon": "09:00 pm",
+                    "Tue": "08:00 pm",
+                    "Wed": "07:00 pm",                    
+                    "Thu": "06:00 pm",
+                    "Fri": "10:00 pm",
+                    "Sat": "08:30 pm",
+                    "Sun": "09:00 pm"
+                }
+            ],
+            "arrivalTimeBack": [
+                {
+                    "Mon": "10:30 pm",
+                    "Tue": "09:30 pm",
+                    "Wed": "08:30 pm",
+                    "Thu": "07:30 pm",
+                    "Fri": "11:30 pm",
+                    "Sat": "10:00 pm",
+                    "Sun": "10:30 pm"
+                }
+            ]
+        },
+        {
+            "from": "Wroclaw (WRO)",
+            "to": "Wellington (WLG)",
+            "duration": "12 hours",
+            "price":[
+                {
+                    "Economy Class": "1000 EUR",
+                    "Premium Economy": "1300 EUR",
+                    "Business Class": "1500 EUR"
+                }
+            ],
+            "plane": "Boeing 747",
+            "departureTimeThere": [
+                {
+                    "Mon": "06:00 am",
+                    "Tue": "07:00 am",
+                    "Wed": "08:00 am",
+                    "Thu": "09:00 am",
+                    "Fri": "10:00 am",
+                    "Sat": "11:00 am",
+                    "Sun": "07:30 am"
+                }
+            ],
+            "arrivalTimeThere": [
+                {
+                    "Mon": "06:00 pm",
+                    "Tue": "07:00 pm",
+                    "Wed": "08:00 pm",
+                    "Thu": "09:00 pm",
+                    "Fri": "10:00 pm",
+                    "Sat": "11:00 pm",
+                    "Sun": "07:30 pm"
+                }
+            ],
+            "departureTimeBack": [
+                {
+                    "Mon": "06:20 am",
+                    "Tue": "07:20 am",
+                    "Wed": "08:20 am",
+                    "Thu": "09:20 am",
+                    "Fri": "10:20 am",
+                    "Sat": "11:20 am",
+                    "Sun": "07:40 am"
+                }
+            ],
+            "arrivalTimeBack": [
+                {
+                    "Mon": "06:20 pm",
+                    "Tue": "07:20 pm",
+                    "Wed": "08:20 pm",
+                    "Thu": "09:20 pm",
+                    "Fri": "10:20 pm",
+                    "Sat": "11:20 pm",
+                    "Sun": "07:40 pm"
+                }
+            ]
+        }
+    ]
+}
+

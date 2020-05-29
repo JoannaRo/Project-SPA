@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/b3aa3cf4dd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <object data="assets/img/samolotDuzyHtml.svg" id="samolot" type="image/svg+xml">
+        <!-- <img src="yups.jpg" /> -->
+    </object>
+
+
+    <div class="userDataHeader" id="userDataHeader">
+        <span id="userData"></span>
+        <span id="logoutTime"></span>
+        <button class="invisibleLogout" id="logout">Logout</button>
+    </div>
+
+    <div class="page01" id="page01">
+        <ul class="invisible">
+            <li><input type="text" class="placeOfDeparture page01input" value="PLACE OF DEPARTURE" readonly="readonly"></li>
+            <li>Wroclaw (WRO)</li>
+        </ul>
+        
+        <ul class="invisible">
+            <li><input type="text" id="destination" class="destination page01input" value="DESTINATION" readonly="readonly"></li>
+            <li>Gdansk (GDN)</li>
+            <li>Paris (CDG)</li>
+            <li>Wellington (WLG)</li>
+        </ul>
+
+        <input type="date" name="departureDate" id="departureDate" class="date page01input" min="" max="">
+
+        <input type="date" name="returnDate" id="returnDate" class="date page01input" min="" max="">
+        
+        <ul class="invisible">
+            <li><input type="text" class="cabinClass page01input" id="cabinClass" value="CABIN CLASS" readonly="readonly"></li>
+            <li>Economy Class</li>
+            <li>Premium Economy</li>
+            <li>Business Class</li>
+        </ul>
+        
+        <ul class="invisible totalNumOfPassengers">
+            <li><input type="text" class="totalNumber page01input" value="NUMBER OF PASSENGERS" readonly="readonly"></li>
+            <li class="passengers">Adults
+                <span class="numberOfPassangers">
+                    <button class="minus"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="adultsNumber" class="passengersNumber page01input" min="1" max="9" value="1" readonly="readonly">
+                    <button class="plus"><i class="fas fa-plus"></i></button>
+                </span>
+            </li>
+            <li class="passengers">Children
+                <span class="numberOfPassangers">
+                    <button class="minus"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="childrensNumber" class="passengersNumber page01input" min="0" max="9" value="0" readonly="readonly">
+                    <button class="plus"><i class="fas fa-plus"></i></button>
+                </span>
+            </li>
+        </ul>
+        <span id="searchButton">SEARCH</span>
+    </div>
+
+
+    <div class="page02 invisible02" id="page02">
+        <div class="searchResult">
+
+            <div id="thereHeader">
+                <span class="from"><i class="fas fa-plane-departure"></i></span>
+                <i class="fas fa-arrow-right"></i>
+                <span class="to"><i class="fas fa-plane-arrival"></i></span>
+            </div>
+
+            <div id="thereData">
+                <p class="date">
+                    <span id="departureDateThere"></span>
+                    <span id="arrivalDateThere"></span>  
+                </p>
+                <p class="time">
+                    <span id="departureTimeThere"></span>
+                    <i class="fas fa-plane duration"></i>
+                    <span id="arrivalTimeThere"></span>
+                </p>
+                <p class="price"></p>                
+            </div>
+
+            <div id="returnHeader">
+                <span class="to"><i class="fas fa-plane-departure"></i></span>                
+                <i class="fas fa-arrow-right"></i>
+                <span class="from"><i class="fas fa-plane-arrival"></i></span>
+            </div>
+
+            <div id="returnData">
+                <p class="date">
+                    <span id="departureDateBack"></span>
+                    <span id="arrivalDateBack"></span>  
+                </p>
+                <p class="time">
+                    <span id="departureTimeBack"></span>
+                    <i class="fas fa-plane duration"></i>
+                    <span id="arrivalTimeBack"></span>
+                </p>
+                <p class="price"></p>                
+            </div>
+        </div>
+        <button id="login">Log in to book your flight</button>            
+        <div class="loginWindow invisible02login" id="loginWindow">
+            Login: <input type="text" id="userlogin">
+            Password: <input type="text" id="userpassword">
+            <button id="loginPasswordConfirmation">Confirm!</button>
+        </div>
+        <button id="seatReservation" class="invisible02seatReservation">Book your seats!</button>
+    </div>
+
+
+
+    <div class="page03 invisible03" id="page03">
+
+        <div id="planeScheme">
+            <!-- <object data="./samolotDuzyHtml.svg" type="image/svg+xml">
+
+             <img src="samolotDuzyHtml.svg" alt="Boeing 747">
+                
+            </object> -->
+
+        </div>
+
+        <div id="summaryOptions">
+            <div id="seatSummary">
+                <p id="headerSeatSummary">Summary of seat selection</p>
+                <p id="dataSeatSummary">1 / 3</p>
+            </div>
+
+            <div id="additionalOption">
+                <p id="headerAdditionalOption"></p>
+                <div id="luggage">Luggage</div>
+                <div id="tariff">Tariff</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

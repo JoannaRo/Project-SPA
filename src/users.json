@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Jan",
+        "forname": "Jankowski",
+        "login": "jan_jan",
+        "password": "Jan123!",
+        "e-mail": "jan.jan@wp.pl"
+    },
+    {
+        "name": "Stefan",
+        "forname": "Stefański",
+        "login": "stef",
+        "password": "Stefan007.",
+        "e-mail": "stef.stef@wp.pl9"
+    }
+]
