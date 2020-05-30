@@ -264,7 +264,7 @@ function checkLogin() {
             document.getElementById("logout").classList.remove("invisibleLogout");
             
             setInterval(timeToLogOut, 1000);
-            setTimeout(sessionTimer, 60 * 1000);
+            setTimeout(sessionTimer, sessionTime * 1000);
             return;
 
         } else {
@@ -277,7 +277,7 @@ function checkLogin() {
 }
 
 
-const sessionTime = 3600;
+const sessionTime = 60*9;
 
 if (sessionStorage.length != 0) {
     document.getElementById("userData").innerHTML += `${sessionStorage.name} ${sessionStorage.forname}`;
@@ -318,17 +318,14 @@ function timeToLogOut() {
 
 //EKRAN_3_
 
-var samolot = document.getElementById("samolot");
-samolot.addEventListener("load", function() {
-    var sv = samolot.contentDocument;
-    console.log("test", sv);
-    
-    sv.getElementById("layer3").addEventListener("click", function() {
-        console.log("klikniete miejsce")});
+var boeing747 = document.getElementById("boeing747");
+console.log(boeing747);
+boeing747.addEventListener("load", function() {
+    var b747 = boeing747.contentDocument; 
+    let layer3 = b747.getElementById("layer3");
+    b747.getElementById("layer3").addEventListener("click", function() {
+        console.log("klikniete miejsce", layer3.children[0].children[0])});
+        (layer3.children[0].children[0]).classList.add("invisible03")
 
 })
 
-// console.log(samolot.contentDocument);
-// document.getElementById("layer3").addEventListener("click", function() {
-//    console.log("klikniete miejsce");
-// })
