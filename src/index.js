@@ -1,4 +1,7 @@
-import style from "./css/index.scss"
+import style from "./css/index.scss";
+import Boeing747 from "./assets/img/samolotDuzyHtml.svg";
+//import Boeing737 from "";
+//import Bombardier from "";
 
 //EKRAN_1_
 
@@ -153,6 +156,15 @@ function dayName(dayIndex) {
     }
 
 //searchingResult(); // funkcja użyta w kodzie powyzej gdzie przechodzimy do strony2
+
+function getFlight() {
+    var userDestination = document.getElementById("destination").value;
+    for (const flight of flightsParsed.flights) {
+        if (flight.to === userDestination) {
+            return flight;
+        }
+}}
+
 function searchingResult() {
 
     var userDepartureDate = new Date(document.getElementById("departureDate").value);
@@ -177,40 +189,37 @@ function searchingResult() {
     document.getElementById("departureDateBack").innerHTML += dateReturnFormated;
     document.getElementById("arrivalDateBack").innerHTML += dateReturnFormated;
 
+    let flight = getFlight();
 
-    var userDestination = document.getElementById("destination").value;
-    for (const flight of flightsParsed.flights) {
-        if (flight.to === userDestination) {
+    const departurePlacesArray = document.getElementsByClassName("from"); 
+    for (let field of departurePlacesArray) {
+        field.innerHTML += flight.from;
+    }
+    const destinationArray = document.getElementsByClassName("to");
+    for (let field of destinationArray) {
+        field.innerHTML += flight.to;
+    }
+    const durationArray = document.getElementsByClassName("duration");
+    for (let field of durationArray) {
+        field.innerHTML += flight.duration;
+    }
 
-            const departurePlacesArray = document.getElementsByClassName("from"); 
-            for (let field of departurePlacesArray) {
-                field.innerHTML += flight.from;
-            }
-            const destinationArray = document.getElementsByClassName("to");
-            for (let field of destinationArray) {
-                field.innerHTML += flight.to;
-            }
-            const durationArray = document.getElementsByClassName("duration");
-            for (let field of durationArray) {
-                field.innerHTML += flight.duration;
-            }
-
-            var departureTimeThere = flight.departureTimeThere[0][userDayNameDeparture]; //.aaa = ["aaa"]
-            var arrivalTimeThere = flight.arrivalTimeThere[0][userDayNameDeparture];
-            var departureTimeBack = flight.departureTimeBack[0][userDayNameReturn];
-            var arrivalTimeBack = flight.arrivalTimeBack[0][userDayNameReturn];
-            document.getElementById("departureTimeThere").innerHTML += departureTimeThere;
-            document.getElementById("arrivalTimeThere").innerHTML += arrivalTimeThere;
-            document.getElementById("departureTimeBack").innerHTML += departureTimeBack;
-            document.getElementById("arrivalTimeBack").innerHTML += arrivalTimeBack;
+    var departureTimeThere = flight.departureTimeThere[0][userDayNameDeparture]; //.aaa = ["aaa"]
+    var arrivalTimeThere = flight.arrivalTimeThere[0][userDayNameDeparture];
+    var departureTimeBack = flight.departureTimeBack[0][userDayNameReturn];
+    var arrivalTimeBack = flight.arrivalTimeBack[0][userDayNameReturn];
+    document.getElementById("departureTimeThere").innerHTML += departureTimeThere;
+    document.getElementById("arrivalTimeThere").innerHTML += arrivalTimeThere;
+    document.getElementById("departureTimeBack").innerHTML += departureTimeBack;
+    document.getElementById("arrivalTimeBack").innerHTML += arrivalTimeBack;
 
 
-            var userCabinClass = document.getElementById("cabinClass").value;
-            var pricePerPerson = flight.price[0][userCabinClass];
-            const priceArray = document.getElementsByClassName("price");
-            for (let field of priceArray) {
-                field.innerHTML += pricePerPerson;
-            }
+    var userCabinClass = document.getElementById("cabinClass").value;
+    var pricePerPerson = flight.price[0][userCabinClass];
+    const priceArray = document.getElementsByClassName("price");
+    for (let field of priceArray) {
+        field.innerHTML += pricePerPerson;
+    }
 
             /* 
                 var obj = {
@@ -223,9 +232,9 @@ function searchingResult() {
                 obj["pole"]["data"] -> 1 
                 .aaa = ["aaa"]
             */
-        }
-    }
 }
+    
+
 
 const usersParsed = require("./users.json");
 
@@ -233,7 +242,10 @@ const usersParsed = require("./users.json");
 document.getElementById("login").addEventListener("click", function() {
     document.getElementById("loginWindow").classList.remove("invisible02login");
 })
-document.getElementById("loginPasswordConfirmation").addEventListener("click", checkLogin);
+document.getElementById("loginPasswordConfirmation").addEventListener("click", function() {
+    checkLogin();
+    displayPlane();
+});
 
 //function leadingZero(i) {
 //    return (i < 10) ? "0"+i : i;
@@ -293,6 +305,7 @@ if (sessionStorage.length != 0) {
     document.getElementById("seatReservation").addEventListener("click", function() {
         document.getElementById("page02").classList.add("invisible02");
         document.getElementById("page03").classList.remove("invisible03");
+        displayPlane();
     })
 } else {
     document.getElementById("userData").innerHTML = "";
@@ -318,14 +331,80 @@ function timeToLogOut() {
 
 //EKRAN_3_
 
-var boeing747 = document.getElementById("boeing747");
-console.log(boeing747);
-boeing747.addEventListener("load", function() {
-    var b747 = boeing747.contentDocument; 
-    let layer3 = b747.getElementById("layer3");
-    b747.getElementById("layer3").addEventListener("click", function() {
-        console.log("klikniete miejsce", layer3.children[0].children[0])});
-        (layer3.children[0].children[0]).classList.add("invisible03")
+var planes = {
+    "Boeing747": Boeing747,
+//    "Boeing737": Boeing737,
+//    "Bombardier": Bombardier
+};
 
-})
+//wyswietli odpowiedni samolot w zaleznosci od tego jaki przelot wybrany - zaimportowac w js odpowiednie 2 pliki
+//odblokuje miejsca w odpowieniej klasie, zalezy jaka wybrana
+function displayPlane() {
+    let flight = getFlight();
+    let planeType = flight.plane;
+    document.getElementById("plane").innerHTML += planes[planeType];
+
+    let businessClass = document.getElementById("layer3");
+    let placesBusinessClass = seatsIntoArray(businessClass);
+    let premiumEconomyClass = document.getElementById("layer4");
+    let placesPremiumEconomyClass = seatsIntoArray(premiumEconomyClass);
+    let economyClass = document.getElementById("layer5");
+    let placesEconomyClass = seatsIntoArray(economyClass);
+
+    let selectedCabinClass = document.getElementById("cabinClass").value    
+
+    if (selectedCabinClass == "Business Class") {
+        placesBusinessClass.forEach(toogleBookedSeat);
+        placesEconomyClass.forEach(toogleLockedSeat);
+        placesPremiumEconomyClass.forEach(toogleLockedSeat);
+    } else if (selectedCabinClass == "Premium Economy") {
+        placesPremiumEconomyClass.forEach(toogleBookedSeat);
+        placesEconomyClass.forEach(toogleLockedSeat);
+        placesBusinessClass.forEach(toogleLockedSeat);
+    } else {
+        placesEconomyClass.forEach(toogleBookedSeat);
+        placesPremiumEconomyClass.forEach(toogleLockedSeat);
+        placesBusinessClass.forEach(toogleLockedSeat);
+    }
+};
+
+
+
+
+
+function toogleLockedSeat(item) {
+    item.classList.add("lockedPlace");
+}
+
+
+
+function toogleBookedSeat(item) {
+    item.addEventListener("click", function() {
+        if (item.classList.contains("bookedPlace")) {
+            item.classList.remove("bookedPlace");
+        } else {
+            item.classList.add("bookedPlace");
+        }
+        })
+}
+
+function seatsIntoArray(cabinClass) {
+    let placesArray = [];
+    for (let item of cabinClass.children) {
+        placesArray.push(item.children[0])
+    }
+    return placesArray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 

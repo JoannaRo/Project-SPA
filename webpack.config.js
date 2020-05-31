@@ -78,7 +78,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|jpg|gif)$/,
                 use: {
                     loader: "file-loader",
                     options: {
@@ -98,6 +98,10 @@ module.exports = {
                 //     }
                 // }],
                 // exclude: path.resolve(__dirname, './src/index.html')
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
             }
         ]
     }

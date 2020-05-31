@@ -51,6 +51,11 @@ li {
 }
 
 .bookedPlace {
-    stroke: #eb0555;
-    stroke-width: 1;
+    stroke: rgb(20, 218, 13) !important;
+    fill: rgb(39, 116, 39) !important;
+    opacity: 0.7 !important;
+}
+
+.lockedPlace {
+    opacity: 0.7 !important;
 }

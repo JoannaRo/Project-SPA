@@ -68,7 +68,7 @@
                     "Business Class": "70 EUR"
                 }
             ],
-            "plane": "Boeing 737",
+            "plane": "Boeing737",
             "departureTimeThere": [
                 {
                     "Mon": "09:00 am",
@@ -125,7 +125,7 @@
                     "Business Class": "1500 EUR"
                 }
             ],
-            "plane": "Boeing 747",
+            "plane": "Boeing747",
             "departureTimeThere": [
                 {
                     "Mon": "06:00 am",
