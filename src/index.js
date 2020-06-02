@@ -238,6 +238,8 @@ function searchingResult() {
 
 const usersParsed = require("./users.json");
 
+let numberOfAvailablePlaces = 0;
+
 //funkcja logowanie po nacisnieciu przycisku
 document.getElementById("login").addEventListener("click", function() {
     document.getElementById("loginWindow").classList.remove("invisible02login");
@@ -245,6 +247,7 @@ document.getElementById("login").addEventListener("click", function() {
 document.getElementById("loginPasswordConfirmation").addEventListener("click", function() {
     checkLogin();
     displayPlane();
+    numberOfAvailablePlaces = numberOfPassengers();
 });
 
 //function leadingZero(i) {
@@ -306,6 +309,7 @@ if (sessionStorage.length != 0) {
         document.getElementById("page02").classList.add("invisible02");
         document.getElementById("page03").classList.remove("invisible03");
         displayPlane();
+        numberOfAvailablePlaces = numberOfPassengers();
     })
 } else {
     document.getElementById("userData").innerHTML = "";
@@ -337,6 +341,8 @@ var planes = {
 //    "Bombardier": Bombardier
 };
 
+
+
 //wyswietli odpowiedni samolot w zaleznosci od tego jaki przelot wybrany - zaimportowac w js odpowiednie 2 pliki
 //odblokuje miejsca w odpowieniej klasie, zalezy jaka wybrana
 function displayPlane() {
@@ -344,6 +350,19 @@ function displayPlane() {
     let planeType = flight.plane;
     document.getElementById("plane").innerHTML += planes[planeType];
 
+    let selectedCabinClass = document.getElementById("cabinClass").value    
+
+    unlockFlightClass(selectedCabinClass);
+
+    for (let item of document.getElementById("changeTariff").children) {
+        if (item.value == selectedCabinClass) {
+            console.log(item);
+            item.setAttribute("selected", "selected");
+        }
+    }
+};
+
+function unlockFlightClass(selectedCabinClass) {
     let businessClass = document.getElementById("layer3");
     let placesBusinessClass = seatsIntoArray(businessClass);
     let premiumEconomyClass = document.getElementById("layer4");
@@ -351,41 +370,93 @@ function displayPlane() {
     let economyClass = document.getElementById("layer5");
     let placesEconomyClass = seatsIntoArray(economyClass);
 
-    let selectedCabinClass = document.getElementById("cabinClass").value    
+    
+    placesBusinessClass.forEach(removeListenerForBookedSeat);
+    placesBusinessClass.forEach(removeBoodekPlace);
+    placesEconomyClass.forEach(removeListenerForBookedSeat);
+    placesEconomyClass.forEach(removeBoodekPlace);
+    placesPremiumEconomyClass.forEach(removeListenerForBookedSeat);
+    placesPremiumEconomyClass.forEach(removeBoodekPlace);
+
+    document.getElementById("dataSeatSummary").innerHTML = "Selected seats: 0"
+
 
     if (selectedCabinClass == "Business Class") {
-        placesBusinessClass.forEach(toogleBookedSeat);
-        placesEconomyClass.forEach(toogleLockedSeat);
-        placesPremiumEconomyClass.forEach(toogleLockedSeat);
+        placesBusinessClass.forEach(removeLockedSeat);
+        placesBusinessClass.forEach(registerListenerForBookedSeat);
+        placesEconomyClass.forEach(addLockedSeat);
+        placesPremiumEconomyClass.forEach(addLockedSeat);
     } else if (selectedCabinClass == "Premium Economy") {
-        placesPremiumEconomyClass.forEach(toogleBookedSeat);
-        placesEconomyClass.forEach(toogleLockedSeat);
-        placesBusinessClass.forEach(toogleLockedSeat);
+        placesPremiumEconomyClass.forEach(removeLockedSeat);
+        placesPremiumEconomyClass.forEach(registerListenerForBookedSeat);
+        placesEconomyClass.forEach(addLockedSeat);
+        placesBusinessClass.forEach(addLockedSeat);
     } else {
-        placesEconomyClass.forEach(toogleBookedSeat);
-        placesPremiumEconomyClass.forEach(toogleLockedSeat);
-        placesBusinessClass.forEach(toogleLockedSeat);
-    }
-};
-
-
-
-
-
-function toogleLockedSeat(item) {
-    item.classList.add("lockedPlace");
+        placesEconomyClass.forEach(removeLockedSeat);
+        placesEconomyClass.forEach(registerListenerForBookedSeat);
+        placesPremiumEconomyClass.forEach(addLockedSeat);
+        placesBusinessClass.forEach(addLockedSeat);
+    }  
 }
 
 
+function removeBoodekPlace(item) {
+    item.classList.remove("bookedPlace");
+    numberOfSelectedPlaces = 0;
+}
+
+
+function addLockedSeat(item) {
+    item.classList.add("lockedPlace");
+}
+
+function removeLockedSeat(item) {
+    item.classList.remove("lockedPlace");
+}
+
+
+let numberOfSelectedPlaces = 0;
+
+function registerListenerForBookedSeat(item) {
+    item.addEventListener("click", toogleBookedSeat);
+}
+
+function removeListenerForBookedSeat(item) {
+    item.removeEventListener("click", toogleBookedSeat);
+}
 
 function toogleBookedSeat(item) {
-    item.addEventListener("click", function() {
+    if (numberOfSelectedPlaces < numberOfAvailablePlaces) {
+        toogleBookedSeatBeforeTreshold(item.target);
+    } else {
+        toogleBookedSeatAfterTreshold(item.target);
+    }
+
+}
+
+
+function toogleBookedSeatAfterTreshold(item) {
+
         if (item.classList.contains("bookedPlace")) {
             item.classList.remove("bookedPlace");
+            numberOfSelectedPlaces -= 1;
+            document.getElementById("dataSeatSummary").innerHTML = `Selected seats: ${numberOfSelectedPlaces} / ${numberOfAvailablePlaces}`;
         } else {
-            item.classList.add("bookedPlace");
+            document.getElementById("dataSeatSummary").innerHTML = `Selected seats: ${numberOfSelectedPlaces} / ${numberOfAvailablePlaces} You have reserved all your seats!`;
         }
-        })
+}
+
+function toogleBookedSeatBeforeTreshold(item) {
+    
+        if (item.classList.contains("bookedPlace")) {
+            item.classList.remove("bookedPlace");
+            numberOfSelectedPlaces -= 1;
+        } else {
+            item.classList.add("bookedPlace")
+            numberOfSelectedPlaces += 1;
+        }
+        console.log(numberOfSelectedPlaces, numberOfAvailablePlaces);
+        document.getElementById("dataSeatSummary").innerHTML = `Selected seats: ${numberOfSelectedPlaces} / ${numberOfAvailablePlaces}`;     
 }
 
 function seatsIntoArray(cabinClass) {
@@ -397,8 +468,23 @@ function seatsIntoArray(cabinClass) {
 }
 
 
+// opcje dodatkowe - zmiana taryfy
 
 
+let changeTariff = document.getElementById("changeTariff");
+changeTariff.addEventListener("change", function() {
+    console.log("zmiana taryfy");
+
+    for (let item of changeTariff.children) {
+        item.removeAttribute("selected");
+    }
+    console.log(changeTariff.value);
+
+
+
+    let selectedCabinClass = changeTariff.value;
+    unlockFlightClass(selectedCabinClass);
+})
 
 
 
