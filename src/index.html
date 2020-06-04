@@ -130,33 +130,91 @@
                 <p id="headerAdditionalOption">Additional Options</p>
                 
                 <div id="tariff">
-                    <label for="changeTariff">Change tariff: </label>
+                    <label for="changeTariff">Tariff: </label>
                     <select id="changeTariff">
                       <option value="Economy Class">Economy Class</option>
                       <option value="Premium Economy">Premium Economy</option>
                       <option value="Business Class">Business Class</option>
                     </select>
+                    <div id="pricePerPerson"></div>
                 </div>
                 
                 <div id="luggage">
-                    <label for="selectLuggage">Select luggage: </label>
+                    <label for="selectLuggage">Luggage: </label>
                     <select id="selectLuggage">
-                      <option value="Hand Luggage">Hand Luggage</option>
-                      <option value="Checked Baggage">Checked Baggage</option>
+                      <option value="Checked Baggage - 25 kg">Checked Baggage - 25 kg</option>
+                      <option value="Checked Baggage - 60 kg">Checked Baggage - 60 kg</option>
                     </select>
+
                     <button id="plusLuggage">+</button>
-                    <span>---</span>
+                    <span id="numberOfLuggage">0</span>
                     <button id="minusLuggage">-</button>
+
+                    <div id="pricePerLuggage"></div>
                 </div>
-
-                <div id="pricePerPerson">Price per person: </div>
-
                 <button id="confirmation">Confirm the order!</button>
 
             </div>
         </div>
 
     </div>
+
+
+
+    <div class="page04 invisible04" id="page04">
+
+        <p>Summary of your order</p>
+
+
+        <div class="orderSummary">
+
+            <div id="thereHeaderSummary">
+                <span class="fromSummary"><i class="fas fa-plane-departure"></i></span>
+                <i class="fas fa-arrow-right"></i>
+                <span class="toSummary"><i class="fas fa-plane-arrival"></i></span>
+            </div>
+
+            <div id="thereDataSummary">
+                <p class="date">
+                    <span id="departureDateThereSummary"></span>
+                    <span id="arrivalDateThereSummary"></span>  
+                </p>
+                <p class="time">
+                    <span id="departureTimeThereSummary"></span>
+                    <i class="fas fa-plane durationSummary"></i>
+                    <span id="arrivalTimeThereSummary"></span>
+                </p>
+            </div>
+
+            <div id="returnHeaderSummary">
+                <span class="toSummary"><i class="fas fa-plane-departure"></i></span>                
+                <i class="fas fa-arrow-right"></i>
+                <span class="fromSummary"><i class="fas fa-plane-arrival"></i></span>
+            </div>
+
+            <div id="returnDataSummary">
+                <p class="date">
+                    <span id="departureDateBackSummary"></span>
+                    <span id="arrivalDateBackSummary"></span>  
+                </p>
+                <p class="time">
+                    <span id="departureTimeBackSummary"></span>
+                    <i class="fas fa-plane durationSummary"></i>
+                    <span id="arrivalTimeBackSummary"></span>
+                </p>
+            </div>
+            <div id="summary">
+                <p id="tariffSummary"></p>
+                <p id="passengersNumber"></p>
+                <p id="flightPrice"></p>
+                <p id="baggagePrice"></p>
+                <p id="totalPrice"></p>
+            </div>
+        </div>
+
+
+    </div>
+
 
 
 

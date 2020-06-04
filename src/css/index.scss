@@ -25,7 +25,9 @@ li {
 .invisible03 {
     display: none;
 }
-
+.invisible04 {
+    display: none;
+}
 
 .invisible li:nth-child(n + 2) {
     display: none;
@@ -59,3 +61,4 @@ li {
 .lockedPlace {
     opacity: 0.7 !important;
 }
+

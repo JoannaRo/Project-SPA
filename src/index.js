@@ -1,7 +1,7 @@
 import style from "./css/index.scss";
 import Boeing747 from "./assets/img/samolotDuzyHtml.svg";
-//import Boeing737 from "";
-//import Bombardier from "";
+import Boeing737 from "./assets/img/samolotSredniHtml.svg";
+import Bombardier from "./assets/img/samolotMalyHtml.svg";
 
 //EKRAN_1_
 
@@ -165,29 +165,44 @@ function getFlight() {
         }
 }}
 
-function searchingResult() {
 
-    var userDepartureDate = new Date(document.getElementById("departureDate").value);
-    var userDayNameDeparture = dayName(userDepartureDate.getDay());
-  
+
+
+function getFlightInfo() {
+    let userDepartureDate = new Date(document.getElementById("departureDate").value);
+    let userDayNameDeparture = dayName(userDepartureDate.getDay());
+    
     const dND = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(userDepartureDate);
     const dD = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(userDepartureDate);
     const mD = new Intl.DateTimeFormat('en', { month: 'short' }).format(userDepartureDate);
     const yD = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(userDepartureDate);
     const dateDepartureFormated = `${dND}, ${dD} ${mD} ${yD}`;
-    document.getElementById("departureDateThere").innerHTML += dateDepartureFormated;
-    document.getElementById("arrivalDateThere").innerHTML += dateDepartureFormated;
-
-    var userReturnDate = new Date(document.getElementById("returnDate").value);
-    var userDayNameReturn = dayName(userReturnDate.getDay());
-
+    
+    let userReturnDate = new Date(document.getElementById("returnDate").value);
+    let userDayNameReturn = dayName(userReturnDate.getDay());
+    
     const dNR = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(userReturnDate);
     const dR = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(userReturnDate);
     const mR = new Intl.DateTimeFormat('en', { month: 'short' }).format(userReturnDate);
     const yR = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(userReturnDate);
     const dateReturnFormated = `${dNR}, ${dR} ${mR} ${yR}`;
-    document.getElementById("departureDateBack").innerHTML += dateReturnFormated;
-    document.getElementById("arrivalDateBack").innerHTML += dateReturnFormated;
+    
+    return {dayNameDeparture: userDayNameDeparture,
+            dayNameReturn: userDayNameReturn,
+            dateDeparture: dateDepartureFormated,
+            dateReturn: dateReturnFormated
+        }
+}
+
+
+
+function searchingResult() {
+
+    let flightInfo = getFlightInfo();
+    document.getElementById("departureDateThere").innerHTML += flightInfo.dateDeparture;
+    document.getElementById("arrivalDateThere").innerHTML += flightInfo.dateDeparture;
+    document.getElementById("departureDateBack").innerHTML += flightInfo.dateReturn;
+    document.getElementById("arrivalDateBack").innerHTML += flightInfo.dateReturn;
 
     let flight = getFlight();
 
@@ -204,21 +219,25 @@ function searchingResult() {
         field.innerHTML += flight.duration;
     }
 
-    var departureTimeThere = flight.departureTimeThere[0][userDayNameDeparture]; //.aaa = ["aaa"]
-    var arrivalTimeThere = flight.arrivalTimeThere[0][userDayNameDeparture];
-    var departureTimeBack = flight.departureTimeBack[0][userDayNameReturn];
-    var arrivalTimeBack = flight.arrivalTimeBack[0][userDayNameReturn];
+    let departureTimeThere = flight.departureTimeThere[0][flightInfo.dayNameDeparture]; //.aaa = ["aaa"]
+    let arrivalTimeThere = flight.arrivalTimeThere[0][flightInfo.dayNameDeparture];
+    let departureTimeBack = flight.departureTimeBack[0][flightInfo.dayNameReturn];
+    let arrivalTimeBack = flight.arrivalTimeBack[0][flightInfo.dayNameReturn];
+    
+
     document.getElementById("departureTimeThere").innerHTML += departureTimeThere;
     document.getElementById("arrivalTimeThere").innerHTML += arrivalTimeThere;
     document.getElementById("departureTimeBack").innerHTML += departureTimeBack;
     document.getElementById("arrivalTimeBack").innerHTML += arrivalTimeBack;
 
 
-    var userCabinClass = document.getElementById("cabinClass").value;
-    var pricePerPerson = flight.price[0][userCabinClass];
+    
+
+    let userCabinClass = document.getElementById("cabinClass").value;
+    let pricePerPerson = flight.price[0][userCabinClass];
     const priceArray = document.getElementsByClassName("price");
     for (let field of priceArray) {
-        field.innerHTML += pricePerPerson;
+        field.innerHTML += `${pricePerPerson} EUR`;
     }
 
             /* 
@@ -337,8 +356,8 @@ function timeToLogOut() {
 
 var planes = {
     "Boeing747": Boeing747,
-//    "Boeing737": Boeing737,
-//    "Bombardier": Bombardier
+    "Boeing737": Boeing737,
+    "Bombardier": Bombardier
 };
 
 
@@ -360,6 +379,9 @@ function displayPlane() {
             item.setAttribute("selected", "selected");
         }
     }
+
+    displayPriceOfFlight();
+    displayPriceOfBaggage();
 };
 
 function unlockFlightClass(selectedCabinClass) {
@@ -470,7 +492,6 @@ function seatsIntoArray(cabinClass) {
 
 // opcje dodatkowe - zmiana taryfy
 
-
 let changeTariff = document.getElementById("changeTariff");
 changeTariff.addEventListener("change", function() {
     console.log("zmiana taryfy");
@@ -480,17 +501,137 @@ changeTariff.addEventListener("change", function() {
     }
     console.log(changeTariff.value);
 
-
-
     let selectedCabinClass = changeTariff.value;
     unlockFlightClass(selectedCabinClass);
 })
 
+// ilosc bagazu 
+let totalLuggage = 0; 
+let numberOfLuggage = document.getElementById("numberOfLuggage");
+document.getElementById("plusLuggage").addEventListener("click", function() {
+    if (totalLuggage < 9) {
+        totalLuggage += 1; 
+        numberOfLuggage.innerHTML = totalLuggage; 
+    }
+
+})
+document.getElementById("minusLuggage").addEventListener("click", function() {
+     
+    if (totalLuggage > 0) {
+        totalLuggage -= 1;
+        numberOfLuggage.innerHTML = totalLuggage;
+    }
+})
+
+
+// cena za klase przelotu w danej relacji
+
+function displayPriceOfFlight() {
+    let flight = getFlight();
+    let changeTariff = document.getElementById("changeTariff");
+
+    for (let tariff in flight.price[0]) {
+        if (tariff ==changeTariff.value) {
+        document.getElementById("pricePerPerson").innerHTML = flight.price[0][tariff] + " EUR - price per person";
+
+    }}
+}
+
+document.getElementById("changeTariff").addEventListener("change", displayPriceOfFlight);
+
+// cena za typ bagażu w danej relacji
+function displayPriceOfBaggage() {
+    let flight = getFlight();
+    let changeBagType = document.getElementById("selectLuggage");
+
+    for (let bag in flight.baggage[0]) {
+        if (bag == changeBagType.value) {
+        document.getElementById("pricePerLuggage").innerHTML = flight.baggage[0][bag] + " - price for one baggage";
+
+    }}
+}
+document.getElementById("selectLuggage").addEventListener("change", displayPriceOfBaggage);
+
+
+// błedy przy potwierdzaniu zamowienia
+
+function orderConfirmation() {
+    if(numberOfSelectedPlaces < numberOfAvailablePlaces) {
+        alert("Choose all your seats");
+    } else {
+        document.getElementById("page03").classList.add("invisible03");
+        document.getElementById("page04").classList.remove("invisible04");
+        summary();
+    }
+}
+
+document.getElementById("confirmation").addEventListener("click", orderConfirmation);
 
 
 
 
 
+function summary() {
 
+    let flightInfo = getFlightInfo();
+    document.getElementById("departureDateThereSummary").innerHTML += flightInfo.dateDeparture;
+    document.getElementById("arrivalDateThereSummary").innerHTML += flightInfo.dateDeparture;
+    document.getElementById("departureDateBackSummary").innerHTML += flightInfo.dateReturn;
+    document.getElementById("arrivalDateBackSummary").innerHTML += flightInfo.dateReturn;
 
+    let flight = getFlight();
 
+    const departurePlacesArray = document.getElementsByClassName("fromSummary"); 
+    for (let field of departurePlacesArray) {
+        field.innerHTML += flight.from;
+    }
+    const destinationArray = document.getElementsByClassName("toSummary");
+    for (let field of destinationArray) {
+        field.innerHTML += flight.to;
+    }
+    const durationArray = document.getElementsByClassName("durationSummary");
+    for (let field of durationArray) {
+        field.innerHTML += flight.duration;
+    }
+
+    let departureTimeThere = flight.departureTimeThere[0][flightInfo.dayNameDeparture]; //.aaa = ["aaa"]
+    let arrivalTimeThere = flight.arrivalTimeThere[0][flightInfo.dayNameDeparture];
+    let departureTimeBack = flight.departureTimeBack[0][flightInfo.dayNameReturn];
+    let arrivalTimeBack = flight.arrivalTimeBack[0][flightInfo.dayNameReturn];
+    
+
+    document.getElementById("departureTimeThereSummary").innerHTML += departureTimeThere;
+    document.getElementById("arrivalTimeThereSummary").innerHTML += arrivalTimeThere;
+    document.getElementById("departureTimeBackSummary").innerHTML += departureTimeBack;
+    document.getElementById("arrivalTimeBackSummary").innerHTML += arrivalTimeBack;
+
+    let totalPrice = 0;
+
+    let changeTariff = document.getElementById("changeTariff");
+    for (let tariff in flight.price[0]) {
+        if (tariff == changeTariff.value) {
+            let pricePerPerson = flight.price[0][tariff];
+            let ticketPrice = pricePerPerson*numberOfAvailablePlaces;
+            totalPrice += ticketPrice;
+            document.getElementById("flightPrice").innerHTML = `Ticket price: ${ticketPrice} EUR`;
+
+        }
+    }
+
+    document.getElementById("passengersNumber").innerHTML = `Number of passengers: ${numberOfAvailablePlaces}`;
+    document.getElementById("tariffSummary").innerHTML = `Tariff: ${changeTariff.value}`;
+
+    let baggageType = document.getElementById("selectLuggage");
+    for (let bag in flight.baggage[0]) {
+        if (bag == baggageType.value) {
+            console.log(flight.baggage[0][bag]);
+            let pricePerBaggage = flight.baggage[0][bag];
+            let baggagePrice = pricePerBaggage*totalLuggage;
+            totalPrice += baggagePrice;
+            document.getElementById("baggagePrice").innerHTML = `Baggage price: ${baggagePrice} EUR`;
+
+        }
+    }
+
+    document.getElementById("totalPrice").innerHTML = `Total price: ${totalPrice} EUR`;
+}

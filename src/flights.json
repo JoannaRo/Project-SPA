@@ -6,9 +6,15 @@
             "duration": "35 minutes",
             "price": [
                 {
-                    "Economy Class": "25 EUR",
-                    "Premium Economy": "30 EUR",
-                    "Business Class": "35 EUR"
+                    "Economy Class": "25",
+                    "Premium Economy": "30",
+                    "Business Class": "35"
+                }
+            ],
+            "baggage": [
+                {
+                    "Checked Baggage - 25 kg": "5",
+                    "Checked Baggage - 60 kg": "12"
                 }
             ],
             "plane": "Bombardier",
@@ -63,9 +69,15 @@
             "duration": "1.5 hours",
             "price": [
                 {
-                    "Economy Class": "60 EUR",
-                    "Premium Economy": "65 EUR",
-                    "Business Class": "70 EUR"
+                    "Economy Class": "60",
+                    "Premium Economy": "65",
+                    "Business Class": "70"
+                }
+            ],
+            "baggage": [
+                {
+                    "Checked Baggage - 25 kg": "10",
+                    "Checked Baggage - 60 kg": " 25"
                 }
             ],
             "plane": "Boeing737",
@@ -120,9 +132,15 @@
             "duration": "12 hours",
             "price":[
                 {
-                    "Economy Class": "1000 EUR",
-                    "Premium Economy": "1300 EUR",
-                    "Business Class": "1500 EUR"
+                    "Economy Class": "1000",
+                    "Premium Economy": "1300",
+                    "Business Class": "1500"
+                }
+            ],
+            "baggage": [
+                {
+                    "Checked Baggage - 25 kg": "30",
+                    "Checked Baggage - 60 kg": "60"
                 }
             ],
             "plane": "Boeing747",
