@@ -1,15 +1,176 @@
+$standardColorDark: #1d5235;
+$standardColorLight: #e3fff0;
+$standardColorMedium: #07f274;
+$standardColorNavButtonHover: #9fe3be;
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+$font-family: 'Raleway', sans-serif;
+$fontSizeOptimal: 10px;
+
+
 body {
-   
-        background-color: darkolivegreen;
+    margin: 0;
+    padding: 0;
+    background-color: darkolivegreen;
+    font-family: $font-family;
+    ul {
+        margin: 0;
+        padding: 0;
+    }
 }
+
+p {
+margin: 0;
+}
+
+.header {
+    background-color: $standardColorDark;
+    height: 10vh;
+}
+.nav {
+    background-color: $standardColorNavButtonHover;
+    height: 10vh;
+    text-align: center;
+    ul {
+        display: flex;
+        li {
+            width: 25vw;
+            border-right: 2px solid $standardColorLight;
+            box-shadow: 1px 0 $standardColorDark;
+            border-radius: 20px 20px;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2*$fontSizeOptimal;
+            &#summaryBar {
+                border-right: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+.mainContent {
+    height: 80vh;
+    background-color: purple;
+    padding: 1px;
+    
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    display: grid;
+}
+
+.footer {
+    background-color: $standardColorDark;
+    font-size: $fontSizeOptimal*0.8;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer p {
+    margin: 0;
+}
+
+
+button {
+    background-color: $standardColorDark;
+    font-family: $font-family;
+    font-size: 1.5*$fontSizeOptimal;
+    color: $standardColorLight;
+    border: 2px solid $standardColorMedium;
+    border-radius: 10px;
+    width: 20vw;
+    height: 8vh;
+    margin: 5px;
+    opacity: 0.8;
+    transition: opacity 1s;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+        background-color: $standardColorNavButtonHover;
+        color: $standardColorDark;
+        transition: opacity 1s, background-color 1s, color 0.5s;
+    }
+}
+
+.centeredButton {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.page00 {
+    background-image: url("/dest/assets/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    width: 100vw;
+    background-position: center;
+}
+
+.page01 {
+    display: inherit;
+}
+
+.departurePlace {
+    background-color: pink;
+    grid-column: 2; grid-row: 1;
+}
+
+
+.destinationPlace {
+    background-color: yellow;
+    grid-column: 4; grid-row: 1;
+}
+
+
+.departureDate {
+    background-color: orange;
+    grid-column: 2; grid-row: 2;
+}
+
+.returnDate {
+    background-color: palegreen;
+    grid-column: 4; grid-row: 2;
+}
+
+.classSelect {
+    background-color: red;
+    grid-column: 2; grid-row: 3;
+}
+
+
+
+
+
+
+
+
+input {
+    margin: 0;
+    width: 20vw;
+}
+
+
+
 
 li {
     list-style-type: none;
 }
 
+.invisibleNavBar {
+    display: none;
+}
+
 .invisibleLogout {
     display: none;
 }
+
+.invisible00 {
+    display: none;
+}
+
 .invisible01 {
     display: none;
 }

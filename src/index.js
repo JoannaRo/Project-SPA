@@ -3,6 +3,16 @@ import Boeing747 from "./assets/img/samolotDuzyHtml.svg";
 import Boeing737 from "./assets/img/samolotSredniHtml.svg";
 import Bombardier from "./assets/img/samolotMalyHtml.svg";
 
+//EKRAN _0_
+
+document.getElementById("startSearching").addEventListener("click", function() {
+    document.getElementById("page00").classList.add("invisible00");
+    document.getElementById("page01").classList.remove("invisible01");
+    document.getElementById("nav").classList.remove("invisibleNavBar");
+})
+
+
+
 //EKRAN_1_
 
 // funkcja oczekuje na kliknięcie inputa, po wybraniu inputa usuwa wartość wpisaną z góry w inpucie ORAZ sprawdza jaka ma klasę: jeśli 'invisible' dodaje 'visible' i wyswietlane są opcje do wyboru. Jeśli po kliknieciu w input mamy juz klase 'visible' - funkcja dodaje klase 'invisible' dzieki czemu dodatkowe opcje sa usuwane. W value inputa umieszczany jest odpowiedni komentarz. Gdy rodzic inputa (ul) posiada klase 'totalNumOfPassengers' - wykonywana jest funkcja numberOfPassengers, która sumuje ilosc dzieci i doroslych i wyswietla odpowiedni komentarz (ilosc osob lub info o przekroczeniu 9 osob). Jeśli rodzic inputa (ul) nie ma klasy 'totalNumOfPassengers' pokazywany jest komentarz 'not selected!'. 
