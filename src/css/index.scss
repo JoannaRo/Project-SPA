@@ -8,6 +8,12 @@ $font-family: 'Raleway', sans-serif;
 $fontSizeOptimal: 10px;
 
 
+@mixin standardFontDarkColor {
+    font-size: $fontSizeOptimal;
+    color: $standardColorDark;
+}
+
+
 body {
     margin: 0;
     padding: 0;
@@ -53,9 +59,7 @@ margin: 0;
 .mainContent {
     height: 80vh;
     background-color: purple;
-    padding: 1px;
-    
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns: 10% 30% 20% 30% 10%;
     display: grid;
 }
 
@@ -109,48 +113,82 @@ button {
     background-position: center;
 }
 
+
 .page01 {
-    display: inherit;
+    display: contents;
 }
+
 
 .departurePlace {
-    background-color: pink;
     grid-column: 2; grid-row: 1;
 }
-
-
 .destinationPlace {
-    background-color: yellow;
     grid-column: 4; grid-row: 1;
 }
-
-
 .departureDate {
-    background-color: orange;
     grid-column: 2; grid-row: 2;
 }
-
 .returnDate {
-    background-color: palegreen;
     grid-column: 4; grid-row: 2;
 }
-
 .classSelect {
-    background-color: red;
     grid-column: 2; grid-row: 3;
 }
-
-
-
-
-
-
+.totalNumOfPassengers {
+    grid-column: 4; grid-row: 3;
+}
+.searchButton {
+    grid-column: 3; grid-row: 4;
+}
 
 
 input {
-    margin: 0;
-    width: 20vw;
+    padding: 0;
+    width: 30vw;
+    height: 10vh;
+    @include standardFontDarkColor;
+    background-color: $standardColorLight;
+    border: 2px solid $standardColorDark;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        border: 2px solid $standardColorMedium;
+    }
 }
+
+
+
+span {
+    &.departureDate {
+        @include standardFontDarkColor;
+        margin: 5px;
+        width: 1px;
+    }
+    &.returnDate {
+        @include standardFontDarkColor;
+        margin: 5px;
+        width: 1px,
+    }
+}
+
+ul {
+    position: relative;
+
+}
+
+
+.invisible li:nth-child(n + 2) {
+    display: none;
+}
+.visible li:nth-child(n + 2) {
+    background-color: cornsilk;
+    @include standardFontDarkColor;
+    z-index: 1;
+
+    position: absolute;
+}
+
+
 
 
 
@@ -190,23 +228,10 @@ li {
     display: none;
 }
 
-.invisible li:nth-child(n + 2) {
-    display: none;
-}
-.visible li:nth-child(n + 2) {
-    color: black;
-    background-color: cornsilk;
-}
-
 .passengersNumber {
     appearance: textfield; 
 }
 
-#searchButton {
-    border: 1px solid white;
-    border-radius: 2px;
-    padding: 2px;
-}
 
 .searchBtnError {
     color: red;

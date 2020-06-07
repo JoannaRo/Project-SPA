@@ -31,7 +31,7 @@ inputHTML.forEach(function(item) {
             if (this.parentNode.parentNode.classList.contains("totalNumOfPassengers")) {
                 var total = numberOfPassengers();
                     if (total <= 9) {
-                        this.setAttribute("value", "Number of passengers: " + total);
+                        this.setAttribute("value", "No. of passengers: " + total);
                     } else {
                         this.setAttribute("value", "Choose max 9 people!");
                     }   
@@ -121,7 +121,7 @@ var searchBtn = document.getElementById("searchButton");
 searchBtn.addEventListener("click", function() {
     var valid = true;
     inputHTML.forEach(function(item) {
-        if (item.value === "Not selected!" || item.value === "PLACE OF DEPARTURE" || item.value === "DESTINATION" || item.value === "CABIN CLASS" || item.value === "NUMBER OF PASSENGERS" || item.value === "Choose max 9 people!" || item.value === "") {
+        if (item.value === "Not selected!" || item.value === "PLACE OF DEPARTURE" || item.value === "DESTINATION" || item.value === "CABIN CLASS" || item.value === "NO. OF PASSENGERS" || item.value === "Choose max 9 people!" || item.value === "") {
             item.classList.add("searchBtnError");
             valid = false;
         } else if (item.classList.contains("date")) {
@@ -628,7 +628,7 @@ function summary() {
         }
     }
 
-    document.getElementById("passengersNumber").innerHTML = `Number of passengers: ${numberOfAvailablePlaces}`;
+    document.getElementById("passengersNumber").innerHTML = `No. of passengers: ${numberOfAvailablePlaces}`;
     document.getElementById("tariffSummary").innerHTML = `Tariff: ${changeTariff.value}`;
 
     let baggageType = document.getElementById("selectLuggage");

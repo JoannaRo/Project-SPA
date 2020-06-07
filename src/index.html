@@ -51,10 +51,13 @@
                     <li>Wellington (WLG)</li>
                 </ul>
 
+
                 <input type="date" name="departureDate" id="departureDate" class="date page01input departureDate" min="" max="">
+                <span class="departureDate">DEPARTURE</span>
 
                 <input type="date" name="returnDate" id="returnDate" class="date page01input returnDate" min="" max="">
-                
+                <span class="returnDate">RETURN</span>
+
                 <ul class="invisible classSelect">
                     <li><input type="text" class="cabinClass page01input" id="cabinClass" value="CABIN CLASS" readonly="readonly"></li>
                     <li>Economy Class</li>
@@ -63,7 +66,7 @@
                 </ul>
                 
                 <ul class="invisible totalNumOfPassengers">
-                    <li><input type="text" class="totalNumber page01input" value="NUMBER OF PASSENGERS" readonly="readonly"></li>
+                    <li><input type="text" class="totalNumber page01input" value="NO. OF PASSENGERS" readonly="readonly"></li>
                     <li class="passengers">Adults
                         <span class="numberOfPassangers">
                             <button class="minus"><i class="fas fa-minus"></i></button>
@@ -79,7 +82,7 @@
                         </span>
                     </li>
                 </ul>
-                <span id="searchButton" class="searchButton">SEARCH</span>
+                <button id="searchButton" class="searchButton">SEARCH</button>
             </div>
 
 
