@@ -25,10 +25,10 @@
 
         <nav class="nav invisibleNavBar" id="nav">
             <ul id="navBar">
-                <li id="searchFlightBar">SEARCHING</li>
-                <li id="searchingResultsBar">RESULTS</li>
-                <li id="seatReservationBar">RESERVATION</li>
-                <li id="summaryBar">SUMMARY</li>
+                <li id="searchFlightBar" class="searchFlightBar inactiveNav">SEARCHING</li>
+                <li id="searchingResultsBar" class="searchingResultsBar inactiveNav">RESULTS</li>
+                <li id="seatReservationBar" class="inactiveNav">RESERVATION</li>
+                <li id="summaryBar" class="inactiveNav">SUMMARY</li>
             </ul>
         </nav>
 
@@ -39,50 +39,58 @@
             </div>
 
             <div class="page01 invisible01" id="page01">
-                <ul class="invisible departurePlace">
-                    <li><input type="text" class="placeOfDeparture page01input" value="PLACE OF DEPARTURE" readonly="readonly"></li>
-                    <li>Wroclaw (WRO)</li>
-                </ul>
-                
-                <ul class="invisible destinationPlace">
-                    <li><input type="text" id="destination" class="destination page01input" value="DESTINATION" readonly="readonly"></li>
-                    <li>Gdansk (GDN)</li>
-                    <li>Paris (CDG)</li>
-                    <li>Wellington (WLG)</li>
-                </ul>
+                <div class="departurePlace">
+                    <ul class="invisible positionAbsolute">
+                        <li><input type="text" class="placeOfDeparture page01input mainInput" value="PLACE OF DEPARTURE" readonly="readonly"></li>
+                        <li>Wroclaw (WRO)</li>
+                    </ul>
+                </div>
+                <div class="destinationPlace">
+                    <ul class="invisible positionAbsolute">
+                        <li><input type="text" id="destination" class="destination page01input mainInput" value="DESTINATION" readonly="readonly"></li>
+                        <li>Gdansk (GDN)</li>
+                        <li>Paris (CDG)</li>
+                        <li>Wellington (WLG)</li>
+                    </ul>
+                </div>
 
-
-                <input type="date" name="departureDate" id="departureDate" class="date page01input departureDate" min="" max="">
+                <input type="date" name="departureDate" id="departureDate" class="date page01input departureDate mainInput" min="" max="">
                 <span class="departureDate">DEPARTURE</span>
 
-                <input type="date" name="returnDate" id="returnDate" class="date page01input returnDate" min="" max="">
+                <input type="date" name="returnDate" id="returnDate" class="date page01input returnDate mainInput" min="" max="">
                 <span class="returnDate">RETURN</span>
 
-                <ul class="invisible classSelect">
-                    <li><input type="text" class="cabinClass page01input" id="cabinClass" value="CABIN CLASS" readonly="readonly"></li>
-                    <li>Economy Class</li>
-                    <li>Premium Economy</li>
-                    <li>Business Class</li>
-                </ul>
+                <div class="classSelect">
+                    <ul class="invisible positionAbsolute">
+                        <li><input type="text" class="cabinClass page01input mainInput" id="cabinClass" value="CABIN CLASS" readonly="readonly"></li>
+                        <li>Economy Class</li>
+                        <li>Premium Economy</li>
+                        <li>Business Class</li>
+                    </ul>
+                </div>
                 
-                <ul class="invisible totalNumOfPassengers">
-                    <li><input type="text" class="totalNumber page01input" value="NO. OF PASSENGERS" readonly="readonly"></li>
-                    <li class="passengers">Adults
-                        <span class="numberOfPassangers">
-                            <button class="minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" id="adultsNumber" class="passengersNumber page01input" min="1" max="9" value="1" readonly="readonly">
-                            <button class="plus"><i class="fas fa-plus"></i></button>
-                        </span>
-                    </li>
-                    <li class="passengers">Children
-                        <span class="numberOfPassangers">
-                            <button class="minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" id="childrensNumber" class="passengersNumber page01input" min="0" max="9" value="0" readonly="readonly">
-                            <button class="plus"><i class="fas fa-plus"></i></button>
-                        </span>
-                    </li>
-                </ul>
-                <button id="searchButton" class="searchButton">SEARCH</button>
+                <div class="totalNumOfPass">
+                    <ul class="invisible totalNumOfPassengers positionAbsolute">
+                        <li><input type="text" class="totalNumber page01input mainInput" value="NO. OF PASSENGERS" readonly="readonly"></li>
+                        <li class="passengers">Adults
+                            <span class="numberOfPassangers">
+                                <button class="minus smallButton"><i class="fas fa-minus"></i></button>
+                                <input type="number" id="adultsNumber" class="passengersNumber page01input smallInput" min="1" max="9" value="1" readonly="readonly">
+                                <button class="plus smallButton"><i class="fas fa-plus"></i></button>
+                            </span>
+                        </li>
+                        <li class="passengers">Children
+                            <span class="numberOfPassangers">
+                                <button class="minus smallButton"><i class="fas fa-minus"></i></button>
+                                <input type="number" id="childrensNumber" class="passengersNumber page01input smallInput" min="0" max="9" value="0" readonly="readonly">
+                                <button class="plus smallButton"><i class="fas fa-plus"></i></button>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="searchButton positionAbsolute">
+                    <button id="searchButton" class="searchButton">SEARCH</button>
+                </div>
             </div>
 
 

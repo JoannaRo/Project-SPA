@@ -9,6 +9,7 @@ document.getElementById("startSearching").addEventListener("click", function() {
     document.getElementById("page00").classList.add("invisible00");
     document.getElementById("page01").classList.remove("invisible01");
     document.getElementById("nav").classList.remove("invisibleNavBar");
+    document.getElementById("searchFlightBar").classList.remove("inactiveNav");
 })
 
 
@@ -142,7 +143,9 @@ searchBtn.addEventListener("click", function() {
         alert("Fill out the fields correctly");
     } else {
     document.getElementById("page01").classList.add("invisible01");
+    document.getElementById("searchFlightBar").classList.add("inactiveNav");
     document.getElementById("page02").classList.remove("invisible02");
+    document.getElementById("searchingResultsBar").classList.remove("inactiveNav");
     searchingResult();
     }
 });
