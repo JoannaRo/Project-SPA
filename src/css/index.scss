@@ -264,6 +264,110 @@ ul.positionAbsolute {
 
 
 
+.page02 {
+    display: contents;
+}
+
+#thereHeader {
+    grid-column: 2; grid-row: 2;
+}
+
+#thereData {
+    grid-column: 2; grid-row:3;
+}
+#returnHeader {
+    grid-column: 4; grid-row: 2;
+}
+#returnData {
+    grid-column: 4; grid-row: 3;
+}
+#login {
+    grid-column: 3; grid-row: 4;
+}
+#seatReservation {
+    grid-column: 3; grid-row: 4;
+}
+
+.resultsHeader {
+    border: 1px solid $standardColorMedium;
+    background-color: $standardColorNavButtonHover;
+    height: 15vh;
+    width: 30vw;
+    border-radius: 5px;
+    padding: 2%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & span {
+        display: flex;
+        align-items: center;
+        padding: 0 2vw;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        font-size: 1.2*$fontSizeOptimal;
+        font-family: $font-family;
+    }
+}
+
+.thereReturnData {
+    background-color: $standardColorLight;
+    border: 2px solid $standardColorNavInactive;
+    border-radius: 10px;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    & > * {
+        font-family: $font-family;
+        font-size: 1.2*$fontSizeOptimal;
+        & > * {
+            margin: 0 2%;
+        }
+    }
+}
+
+.date {
+    & .dateFont {
+    font-size: 2*$fontSizeOptimal;
+    }
+}
+
+
+.flightDataContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.loginWindow {
+    z-index: 1;
+    width: 50vw;
+    height: 50vh;
+    margin: 17vh 25vw;
+    position: absolute;
+    border: 1px solid $standardColorMedium;
+    border-radius: 5px;
+    box-shadow: 5px 5px $standardColorNavInactive;
+    background-color: $standardColorDark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: $standardColorLight;
+    font-size: 1.2*$fontSizeOptimal;
+    & input {
+        @include input;
+        height: 8vh;
+        width: 20vw;
+        font-size: 1.2*$fontSizeOptimal;
+    }
+}
+
+
 
 
 li {

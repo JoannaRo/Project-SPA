@@ -25,8 +25,8 @@
 
         <nav class="nav invisibleNavBar" id="nav">
             <ul id="navBar">
-                <li id="searchFlightBar" class="searchFlightBar inactiveNav">SEARCHING</li>
-                <li id="searchingResultsBar" class="searchingResultsBar inactiveNav">RESULTS</li>
+                <li id="searchFlightBar" class=" inactiveNav">SEARCHING</li>
+                <li id="searchingResultsBar" class=" inactiveNav">RESULTS</li>
                 <li id="seatReservationBar" class="inactiveNav">RESERVATION</li>
                 <li id="summaryBar" class="inactiveNav">SUMMARY</li>
             </ul>
@@ -95,47 +95,64 @@
 
 
             <div class="page02 invisible02" id="page02">
-                <div class="searchResult">
 
                     <div id="thereHeader">
-                        <span class="from"><i class="fas fa-plane-departure"></i></span>
-                        <i class="fas fa-arrow-right"></i>
-                        <span class="to"><i class="fas fa-plane-arrival"></i></span>
+                        <div class="resultsHeader">
+                            <i class="fas fa-plane-departure"></i><span class="from"></span> <br>
+                            <i class="fas fa-arrow-right"></i> <br>
+                            <span class="to"></span> <br>
+                        </div>
                     </div>
 
-                    <div id="thereData">
-                        <p class="date">
-                            <span id="departureDateThere"></span>
-                            <span id="arrivalDateThere"></span>  
-                        </p>
-                        <p class="time">
-                            <span id="departureTimeThere"></span>
-                            <i class="fas fa-plane duration"></i>
-                            <span id="arrivalTimeThere"></span>
-                        </p>
-                        <p class="price"></p>                
+                    <div id="thereData" class="thereReturnData">
+                        <div class="flightDataContainer"> 
+                            <p class="date">
+                                <span>DEPARTURE</span> <br> <br>
+                                <span id="departureDateThere" class="dateFont"></span> <br>
+                                <span id="departureTimeThere" class="dateFont"></span> <br>
+                            </p>
+                            <p class="time">
+                                <br>
+                                <i class="fas fa-plane duration"></i> <br>
+                            </p>
+                            <p class="date">
+                                <span>ARRIVAL</span> <br> <br>
+                                <span id="arrivalDateThere" class="dateFont"></span> <br>
+                                <span id="arrivalTimeThere" class="dateFont"></span>
+                            </p>  
+                        </div> 
+                        <p class="price"></p>            
                     </div>
 
                     <div id="returnHeader">
-                        <span class="to"><i class="fas fa-plane-departure"></i></span>                
-                        <i class="fas fa-arrow-right"></i>
-                        <span class="from"><i class="fas fa-plane-arrival"></i></span>
+                        <div class="resultsHeader">
+                            <span class="to"></span> <br>             
+                            <i class="fas fa-arrow-right"></i> <br>
+                            <span class="from"></span><i class="fas fa-plane-arrival"></i> <br>
+                        </div>
                     </div>
 
-                    <div id="returnData">
-                        <p class="date">
-                            <span id="departureDateBack"></span>
-                            <span id="arrivalDateBack"></span>  
-                        </p>
-                        <p class="time">
-                            <span id="departureTimeBack"></span>
-                            <i class="fas fa-plane duration"></i>
-                            <span id="arrivalTimeBack"></span>
-                        </p>
-                        <p class="price"></p>                
+                    <div id="returnData" class="thereReturnData">
+                        <div class="flightDataContainer">
+                            <p class="date">
+                                <span>RETURN</span> <br> <br>
+                                <span id="departureDateBack" class="dateFont"></span> <br>
+                                <span id="departureTimeBack" class="dateFont"></span> <br>
+                            </p>
+                            <p class="time">
+                                <i class="fas fa-plane duration"></i> <br>
+                            </p>
+                            <p class="date">
+                                <span>ARRIVAL</span> <br> <br>
+                                <span id="arrivalDateBack" class="dateFont"></span> <br> 
+                                <span id="arrivalTimeBack" class="dateFont"></span>
+                            </p>         
+                        </div>
+                        <p class="price"></p>
                     </div>
-                </div>
-                <button id="login">Log in to book your flight</button>            
+
+                <button id="login">Log in to book your flight</button>   
+                         
                 <div class="loginWindow invisible02login" id="loginWindow">
                     Login: <input type="text" id="userlogin">
                     Password: <input type="text" id="userpassword">

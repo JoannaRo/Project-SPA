@@ -189,7 +189,7 @@ function getFlightInfo() {
     const dD = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(userDepartureDate);
     const mD = new Intl.DateTimeFormat('en', { month: 'short' }).format(userDepartureDate);
     const yD = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(userDepartureDate);
-    const dateDepartureFormated = `${dND}, ${dD} ${mD} ${yD}`;
+    const dateDepartureFormated = `${dND}, <br> ${dD} ${mD} ${yD}`;
     
     let userReturnDate = new Date(document.getElementById("returnDate").value);
     let userDayNameReturn = dayName(userReturnDate.getDay());
@@ -198,7 +198,7 @@ function getFlightInfo() {
     const dR = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(userReturnDate);
     const mR = new Intl.DateTimeFormat('en', { month: 'short' }).format(userReturnDate);
     const yR = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(userReturnDate);
-    const dateReturnFormated = `${dNR}, ${dR} ${mR} ${yR}`;
+    const dateReturnFormated = `${dNR}, <br> ${dR} ${mR} ${yR}`;
     
     return {dayNameDeparture: userDayNameDeparture,
             dayNameReturn: userDayNameReturn,
@@ -306,7 +306,9 @@ function checkLogin() {
             sessionStorage.setItem("forname", user.forname);
             sessionStorage.setItem("loginTimeInSeconds", (timeOfLogin.getTime() / 1000));
             document.getElementById("page02").classList.add("invisible02");
+            document.getElementById("searchingResultsBar").classList.add("inactiveNav")
             document.getElementById("page03").classList.remove("invisible03");
+            document.getElementById("seatReservationBar").classList.remove("inactiveNav")
             document.getElementById("userData").innerHTML += `${sessionStorage.name} ${sessionStorage.forname}`;
             document.getElementById("logout").classList.remove("invisibleLogout");
             
@@ -339,7 +341,9 @@ if (sessionStorage.length != 0) {
     document.getElementById("seatReservation").classList.remove("invisible02seatReservation");
     document.getElementById("seatReservation").addEventListener("click", function() {
         document.getElementById("page02").classList.add("invisible02");
+        document.getElementById("searchingResultsBar").classList.add("inactiveNav")
         document.getElementById("page03").classList.remove("invisible03");
+        document.getElementById("seatReservationBar").classList.remove("inactiveNav")
         displayPlane();
         numberOfAvailablePlaces = numberOfPassengers();
     })
