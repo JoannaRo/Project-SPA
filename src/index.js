@@ -343,7 +343,7 @@ if (sessionStorage.length != 0) {
         document.getElementById("page02").classList.add("invisible02");
         document.getElementById("searchingResultsBar").classList.add("inactiveNav")
         document.getElementById("page03").classList.remove("invisible03");
-        document.getElementById("seatReservationBar").classList.remove("inactiveNav")
+        document.getElementById("seatReservationBar").classList.remove("inactiveNav");
         displayPlane();
         numberOfAvailablePlaces = numberOfPassengers();
     })
@@ -577,7 +577,10 @@ function orderConfirmation() {
         alert("Choose all your seats");
     } else {
         document.getElementById("page03").classList.add("invisible03");
+        document.getElementById("seatReservationBar").classList.add("inactiveNav");
         document.getElementById("page04").classList.remove("invisible04");
+        document.getElementById("summaryBar").classList.remove("inactiveNav");
+        document.getElementById("nav").classList.add("activeNav");
         summary();
     }
 }
@@ -630,13 +633,13 @@ function summary() {
             let pricePerPerson = flight.price[0][tariff];
             let ticketPrice = pricePerPerson*numberOfAvailablePlaces;
             totalPrice += ticketPrice;
-            document.getElementById("flightPrice").innerHTML = `Ticket price: ${ticketPrice} EUR`;
+            document.getElementById("flightPrice").innerHTML = `${ticketPrice} EUR`;
 
         }
     }
 
-    document.getElementById("passengersNumber").innerHTML = `No. of passengers: ${numberOfAvailablePlaces}`;
-    document.getElementById("tariffSummary").innerHTML = `Tariff: ${changeTariff.value}`;
+    document.getElementById("passengersNumber").innerHTML = `${numberOfAvailablePlaces} person(s)`;
+    document.getElementById("tariffSummary").innerHTML = `${changeTariff.value}`;
 
     let baggageType = document.getElementById("selectLuggage");
     for (let bag in flight.baggage[0]) {
@@ -645,10 +648,10 @@ function summary() {
             let pricePerBaggage = flight.baggage[0][bag];
             let baggagePrice = pricePerBaggage*totalLuggage;
             totalPrice += baggagePrice;
-            document.getElementById("baggagePrice").innerHTML = `Baggage price: ${baggagePrice} EUR`;
+            document.getElementById("baggagePrice").innerHTML = `${baggagePrice} EUR`;
 
         }
     }
 
-    document.getElementById("totalPrice").innerHTML = `Total price: ${totalPrice} EUR`;
+    document.getElementById("totalPrice").innerHTML = `${totalPrice} EUR`;
 }
