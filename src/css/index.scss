@@ -399,6 +399,7 @@ ul.positionAbsolute {
 
 .page03 {
     display: contents;
+    text-align: center;
 }
 
 #warningSeatSummary {
@@ -420,9 +421,20 @@ ul.positionAbsolute {
 }
 
 #planeScheme {
-    grid-column: 1 / span 3; grid-row: 2 / span 5;
+    grid-column: 1 / span 3; grid-row: 2 / span 6;
+    margin-top: 5vh;
 }
+
+.fixed {
+    grid-column: 4; grid-row: 2 / span 5;
+    position: fixed;
+    top: 15vh;
+    right: 5vw;
+    background-color: pink;
+}
+
 #seatSummary {
+    margin-top: 5vh;
     grid-column: 4; grid-row: 2;
     display: block;
     background-color: $standardColorLight;
@@ -455,7 +467,7 @@ ul.positionAbsolute {
         border-radius: 10px;
         color: $standardColorLight;
         height: 10vh;
-        width: 30vw;
+       
         display: flex;
         justify-content: center;
         align-items: center;
@@ -513,7 +525,7 @@ ul.positionAbsolute {
 #confirmation {
     grid-column: 4; grid-row: 6;
     width: 30vw;
-    margin: 3% 0;
+    margin: 3vh 0;
 }
 
 

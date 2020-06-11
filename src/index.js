@@ -553,7 +553,7 @@ function displayPriceOfFlight() {
 
     for (let tariff in flight.price[0]) {
         if (tariff ==changeTariff.value) {
-        document.getElementById("pricePerPerson").innerHTML = flight.price[0][tariff] + " EUR - price per person";
+        document.getElementById("pricePerPerson").innerHTML = flight.price[0][tariff] + " EUR<br>price per person";
 
     }}
 }
@@ -567,7 +567,7 @@ function displayPriceOfBaggage() {
 
     for (let bag in flight.baggage[0]) {
         if (bag == changeBagType.value) {
-        document.getElementById("pricePerLuggage").innerHTML = flight.baggage[0][bag] + " - price for one baggage";
+        document.getElementById("pricePerLuggage").innerHTML = flight.baggage[0][bag] + " EUR<br>price for one baggage";
 
     }}
 }
