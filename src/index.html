@@ -178,32 +178,38 @@
                 </div>
 
                 <div id="seatSummary">
-                    <p id="headerSeatSummary">Summary of seat selection</p>
+                    <p id="headerSeatSummary">Seat selection</p>
                     <p id="dataSeatSummary"></p>
+                    <p id="warningSeatSummary" class="warningSeatSummary">You have reserved all your seats!</p>
                 </div>
 
-                <p id="headerAdditionalOption">Additional Options</p>
+                <div id="headerAdditionalOption">
+                    <div class="optionsContent">Additional Options</div>
+                </div>
                 
                 <div id="tariff">
-                    <label for="changeTariff">Tariff: </label>
+                    <label for="changeTariff">Tariff: </label> <br>
                     <select id="changeTariff">
-                    <option value="Economy Class">Economy Class</option>
-                    <option value="Premium Economy">Premium Economy</option>
-                    <option value="Business Class">Business Class</option>
+                    <option value="Economy Class" class="optionInSelect">Economy Class</option>
+                    <option value="Premium Economy" class="optionInSelect">Premium Economy</option>
+                    <option value="Business Class" class="optionInSelect">Business Class</option>
                     </select>
                     <div id="pricePerPerson"></div>
+                    <br>
+                    <hr width="30vw">
                 </div>
-                
-                <div id="luggage">
-                    <label for="selectLuggage">Luggage: </label>
+                <div id="luggage">                    
+                    <label for="selectLuggage">Luggage: </label> <br>
                     <select id="selectLuggage">
-                    <option value="Checked Baggage - 25 kg">Checked Baggage - 25 kg</option>
-                    <option value="Checked Baggage - 60 kg">Checked Baggage - 60 kg</option>
+                        <option value="Checked Baggage - 25 kg">Checked Baggage - 25 kg</option>
+                        <option value="Checked Baggage - 60 kg">Checked Baggage - 60 kg</option>
                     </select>
 
-                    <button id="plusLuggage">+</button>
-                    <span id="numberOfLuggage">0</span>
-                    <button id="minusLuggage">-</button>
+                    <span class="numOfLugg">
+                        <button id="plusLuggage">+</button>
+                        <p id="numberOfLuggage">0</p>
+                        <button id="minusLuggage">-</button>
+                    </span>
 
                     <div id="pricePerLuggage"></div>
                 </div>

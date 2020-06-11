@@ -480,8 +480,10 @@ function toogleBookedSeatAfterTreshold(item) {
             item.classList.remove("bookedPlace");
             numberOfSelectedPlaces -= 1;
             document.getElementById("dataSeatSummary").innerHTML = `Selected seats: ${numberOfSelectedPlaces} / ${numberOfAvailablePlaces}`;
+            document.getElementById("warningSeatSummary").classList.add("warningSeatSummary");
         } else {
-            document.getElementById("dataSeatSummary").innerHTML = `Selected seats: ${numberOfSelectedPlaces} / ${numberOfAvailablePlaces} You have reserved all your seats!`;
+            document.getElementById("dataSeatSummary").innerHTML = `Selected seats: ${numberOfSelectedPlaces} / ${numberOfAvailablePlaces} <br>`;
+            document.getElementById("warningSeatSummary").classList.remove("warningSeatSummary");
         }
 }
 
@@ -496,7 +498,8 @@ function toogleBookedSeatBeforeTreshold(item) {
         }
         console.log(numberOfSelectedPlaces, numberOfAvailablePlaces);
         document.getElementById("dataSeatSummary").innerHTML = `Selected seats: ${numberOfSelectedPlaces} / ${numberOfAvailablePlaces}`;     
-}
+        document.getElementById("warningSeatSummary").classList.add("warningSeatSummary");
+    }
 
 function seatsIntoArray(cabinClass) {
     let placesArray = [];
@@ -511,15 +514,16 @@ function seatsIntoArray(cabinClass) {
 
 let changeTariff = document.getElementById("changeTariff");
 changeTariff.addEventListener("change", function() {
-    console.log("zmiana taryfy");
 
     for (let item of changeTariff.children) {
         item.removeAttribute("selected");
     }
-    console.log(changeTariff.value);
 
     let selectedCabinClass = changeTariff.value;
     unlockFlightClass(selectedCabinClass);
+
+    document.getElementById("warningSeatSummary").classList.add("warningSeatSummary");
+
 })
 
 // ilosc bagazu 
