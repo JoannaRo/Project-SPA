@@ -62,11 +62,11 @@
                     </ul>
                 </div>
 
+                <span class="departureDate">DEPARTURE</span>    
                 <input type="date" name="departureDate" id="departureDate" class="date page01input departureDate mainInput" min="" max="">
-                <span class="departureDate">DEPARTURE</span>
-
-                <input type="date" name="returnDate" id="returnDate" class="date page01input returnDate mainInput" min="" max="">
+                
                 <span class="returnDate">RETURN</span>
+                <input type="date" name="returnDate" id="returnDate" class="date page01input returnDate mainInput" min="" max="">
 
                 <div class="classSelect">
                     <ul class="invisible positionAbsolute">
@@ -79,7 +79,7 @@
                 
                 <div class="totalNumOfPass">
                     <ul class="invisible totalNumOfPassengers positionAbsolute">
-                        <li><input type="text" class="totalNumber page01input mainInput" value="NO. OF PASSENGERS" readonly="readonly"></li>
+                        <li><i class="fas fa-chevron-up"></i><input type="text" class="totalNumber page01input mainInput" value="NO. OF PASSENGERS" readonly="readonly"></li>
                         <li class="passengers">Adults
                             <span class="numberOfPassangers">
                                 <button class="minus smallButton"><i class="fas fa-minus"></i></button>
@@ -295,7 +295,7 @@
                         <br>
                         <hr width="20%">
                         <br>
-                        <p id="totalPrice" class="dateFont"></p>
+                        <p id="totalPrice" class="price"></p>
                     </div>
                 </div>
 
