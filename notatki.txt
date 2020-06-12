@@ -1,8 +1,0 @@
-jak klikne, żeby znikało to co już jest w inpucie i rozwijało się to co ukryte
-jak odklikuje na stronie to wraca to co było w inpucie, chyba ze wybrałam coś z listy, wtedy zostaje to co wybralam
-
-
-pobierz liste czildrenów
-pobierz childrena pierwszego childrena
-po kliknieciu któregos childrena poza pierwszym, wez texstz pomiedzy li i przypisz jako value w pierwszym childrenie w inpucie
-
