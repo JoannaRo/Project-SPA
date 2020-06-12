@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/b3aa3cf4dd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>  
+    
+
+
+
+        <header class="header">
+
+            <span class="logo">
+                <img src="./assets/img/logo.png" alt="logo">
+            </span>
+
+            <span class="userTime">
+                <div id="logoutTime"></div>
+                <div id="userData"></div>
+            </span>
+            
+            <div class="logoutButton">
+                <button class="invisibleLogout" id="logout">Logout</button>
+            </div>
+
+        </header>
+
+        <nav class="nav invisibleNavBar" id="nav">
+            <ul id="navBar">
+                <li id="searchFlightBar" class=" inactiveNav">SEARCHING</li>
+                <li id="searchingResultsBar" class=" inactiveNav">RESULTS</li>
+                <li id="seatReservationBar" class="inactiveNav">RESERVATION</li>
+                <li id="summaryBar" class="inactiveNav">SUMMARY</li>
+            </ul>
+        </nav>
+
+        <section class="mainContent"> 
+
+            <div class="page00 centeredButton" id="page00">
+                <button id="startSearching">Find your flight!</button>
+            </div>
+
+            <div class="page01 invisible01" id="page01">
+                <div class="departurePlace">
+                    <ul class="invisible positionAbsolute">
+                        <li><input type="text" class="placeOfDeparture page01input mainInput" value="PLACE OF DEPARTURE" readonly="readonly"></li>
+                        <li>Wroclaw (WRO)</li>
+                    </ul>
+                </div>
+                <div class="destinationPlace">
+                    <ul class="invisible positionAbsolute">
+                        <li><input type="text" id="destination" class="destination page01input mainInput" value="DESTINATION" readonly="readonly"></li>
+                        <li>Gdansk (GDN)</li>
+                        <li>Paris (CDG)</li>
+                        <li>Wellington (WLG)</li>
+                    </ul>
+                </div>
+
+                <span class="departureDate">DEPARTURE</span>    
+                <input type="date" name="departureDate" id="departureDate" class="date page01input departureDate mainInput" min="" max="">
+                
+                <span class="returnDate">RETURN</span>
+                <input type="date" name="returnDate" id="returnDate" class="date page01input returnDate mainInput" min="" max="">
+
+                <div class="classSelect">
+                    <ul class="invisible positionAbsolute">
+                        <li><input type="text" class="cabinClass page01input mainInput" id="cabinClass" value="CABIN CLASS" readonly="readonly"></li>
+                        <li>Economy Class</li>
+                        <li>Premium Economy</li>
+                        <li>Business Class</li>
+                    </ul>
+                </div>
+                
+                <div class="totalNumOfPass">
+                    <ul class="invisible totalNumOfPassengers positionAbsolute">
+                        <li><i class="fas fa-chevron-up"></i><input type="text" class="totalNumber page01input mainInput" value="NO. OF PASSENGERS" readonly="readonly"></li>
+                        <li class="passengers">Adults
+                            <span class="numberOfPassangers">
+                                <button class="minus smallButton"><i class="fas fa-minus"></i></button>
+                                <input type="number" id="adultsNumber" class="passengersNumber page01input smallInput" min="1" max="9" value="1" readonly="readonly">
+                                <button class="plus smallButton"><i class="fas fa-plus"></i></button>
+                            </span>
+                        </li>
+                        <li class="passengers">Children
+                            <span class="numberOfPassangers">
+                                <button class="minus smallButton"><i class="fas fa-minus"></i></button>
+                                <input type="number" id="childrensNumber" class="passengersNumber page01input smallInput" min="0" max="9" value="0" readonly="readonly">
+                                <button class="plus smallButton"><i class="fas fa-plus"></i></button>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="searchButton positionAbsolute">
+                    <button id="searchButton" class="searchButton">SEARCH</button>
+                </div>
+            </div>
+
+
+            <div class="page02 invisible02" id="page02">
+
+                    <div id="thereHeader">
+                        <div class="resultsHeader">
+                            <i class="fas fa-plane-departure"></i><span class="from"></span> <br>
+                            <i class="fas fa-arrow-right"></i> <br>
+                            <span class="to"></span> <br>
+                        </div>
+                    </div>
+
+                    <div id="thereData" class="thereReturnData">
+                        <div class="flightDataContainer"> 
+                            <p class="date">
+                                <span>DEPARTURE</span> <br> <br>
+                                <span id="departureDateThere" class="dateFont"></span> <br>
+                                <span id="departureTimeThere" class="dateFont"></span> <br>
+                            </p>
+                            <p class="time">
+                                <br>
+                                <i class="fas fa-plane duration"></i> <br>
+                            </p>
+                            <p class="date">
+                                <span>ARRIVAL</span> <br> <br>
+                                <span id="arrivalDateThere" class="dateFont"></span> <br>
+                                <span id="arrivalTimeThere" class="dateFont"></span>
+                            </p>  
+                        </div> 
+                        <p class="price"></p>            
+                    </div>
+
+                    <div id="returnHeader">
+                        <div class="resultsHeader">
+                            <span class="to"></span> <br>             
+                            <i class="fas fa-arrow-right"></i> <br>
+                            <span class="from"></span><i class="fas fa-plane-arrival"></i> <br>
+                        </div>
+                    </div>
+
+                    <div id="returnData" class="thereReturnData">
+                        <div class="flightDataContainer">
+                            <p class="date">
+                                <span>RETURN</span> <br> <br>
+                                <span id="departureDateBack" class="dateFont"></span> <br>
+                                <span id="departureTimeBack" class="dateFont"></span> <br>
+                            </p>
+                            <p class="time">
+                                <i class="fas fa-plane duration"></i> <br>
+                            </p>
+                            <p class="date">
+                                <span>ARRIVAL</span> <br> <br>
+                                <span id="arrivalDateBack" class="dateFont"></span> <br> 
+                                <span id="arrivalTimeBack" class="dateFont"></span>
+                            </p>         
+                        </div>
+                        <p class="price"></p>
+                    </div>
+
+                <button id="login">Log in to book your flight</button>   
+
+                <div class="loginWindow invisible02login" id="loginWindow">
+                    Login: <input type="text" id="userlogin">
+                    Password: <input type="text" id="userpassword">
+                    <button id="loginPasswordConfirmation">Confirm!</button>
+                </div>
+                <button id="seatReservation" class="invisible02seatReservation">Book your seats!</button>
+            </div>
+
+
+
+            <div class="page03 invisible03" id="page03">
+
+                <div id="planeScheme">
+                    <div id="plane"></div>
+                </div>
+<div class="fixed">
+                <div id="seatSummary">
+                    <p id="headerSeatSummary">Seat selection</p>
+                    <p id="dataSeatSummary"></p>
+                    <p id="warningSeatSummary" class="warningSeatSummary">You have reserved all your seats!</p>
+                </div>
+
+                <div id="headerAdditionalOption">
+                    <div class="optionsContent">Additional Options</div>
+                </div>
+                
+                <div id="tariff">
+                    <label for="changeTariff">Tariff: </label> <br>
+                    <select id="changeTariff">
+                    <option value="Economy Class" class="optionInSelect">Economy Class</option>
+                    <option value="Premium Economy" class="optionInSelect">Premium Economy</option>
+                    <option value="Business Class" class="optionInSelect">Business Class</option>
+                    </select>
+                    <div id="pricePerPerson"></div>
+                    <br>
+                    <hr width="80vw">
+                </div>
+                <div id="luggage">                    
+                    <label for="selectLuggage">Luggage: </label> <br>
+                    <select id="selectLuggage">
+                        <option value="Checked Baggage - 25 kg">Checked Baggage - 25 kg</option>
+                        <option value="Checked Baggage - 60 kg">Checked Baggage - 60 kg</option>
+                    </select>
+
+                    <span class="numOfLugg">
+                        <button id="plusLuggage">+</button>
+                        <p id="numberOfLuggage">0</p>
+                        <button id="minusLuggage">-</button>
+                    </span>
+
+                    <div id="pricePerLuggage"></div>
+                </div>
+                
+                <button id="confirmation">Confirm the order!</button>                
+</div>
+            </div>
+
+
+            <div class="page04 invisible04" id="page04">
+
+                <p class="lastSummary">Summary of your order</p>
+
+                <div id="thereHeaderSummary">
+                    <div class="resultsHeader">
+                        <i class="fas fa-plane-departure"></i><span class="fromSummary"></span> <br>
+                        <i class="fas fa-arrow-right"></i> <br>
+                        <span class="toSummary"></span> <br>
+                    </div>
+                </div>
+
+                <div id="thereDataSummary" class="thereReturnData">
+                    <div class="flightDataContainer">
+                        <p class="date">
+                            <span>DEPARTURE</span> <br> <br>
+                            <span id="departureDateThereSummary" class="dateFont"></span> <br>
+                            <span id="departureTimeThereSummary" class="dateFont"></span>                           
+                        </p>
+                        <p class="time">
+                            <br>
+                            <i class="fas fa-plane durationSummary"></i>
+                        </p>
+                        <p class="date">
+                            <span>ARRIVAL</span> <br> <br>
+                            <span id="arrivalDateThereSummary" class="dateFont"></span> <br>
+                            <span id="arrivalTimeThereSummary" class="dateFont"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="returnHeaderSummary">
+                    <div class="resultsHeader">
+                        <span class="toSummary"></span> <br>
+                        <i class="fas fa-arrow-right"></i> <br>
+                        <span class="fromSummary"></span><i class="fas fa-plane-arrival"></i> <br>
+                    </div>
+                </div>
+
+                <div id="returnDataSummary" class="thereReturnData">
+                    <div class="flightDataContainer">
+                        <p class="date">
+                            <span>RETURN</span> <br> <br>
+                            <span id="departureDateBackSummary" class="dateFont"></span> <br>
+                            <span id="departureTimeBackSummary" class="dateFont"></span> <br>                         
+                        </p>
+                        <p class="time">
+                            <i class="fas fa-plane durationSummary"></i> <br>
+                        </p>
+                        <p class="date">
+                            <span>ARRIVAL</span> <br> <br>
+                            <span id="arrivalDateBackSummary" class="dateFont"></span> <br>
+                            <span id="arrivalTimeBackSummary" class="dateFont"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="summary">
+                    <div class="summaryHeaders">
+                        <p>Tariff: </p>
+                        <p>No. of passengers: </p>
+                        <p>Tickets price: </p>
+                        <p>Baggages price: </p>
+                        <br>
+                        <hr width="20%">
+                        <br>
+                        <p class="dateFont">Total price: </p>
+                    </div>
+                    <div class="summaryData">
+                        <p id="tariffSummary"></p>
+                        <p id="passengersNumber"></p>
+                        <p id="flightPrice"></p>
+                        <p id="baggagePrice"></p>
+                        <br>
+                        <hr width="20%">
+                        <br>
+                        <p id="totalPrice" class="price"></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        <footer class="footer">
+            <p>Joanna Rowicka &copy 2020</p> 
+        </footer>
+
+
+<script type="text/javascript" src="index.50739b9bbf7afb32f723.bundle.js"></script></body>
+
+</html>
