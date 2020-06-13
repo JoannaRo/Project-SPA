@@ -25,7 +25,6 @@ inputHTML.forEach(function(item) {
         if (this.parentNode.parentNode.classList.contains("invisible")) {
             this.parentNode.parentNode.classList.remove("invisible");
             this.parentNode.parentNode.classList.add("visible");
-            console.log(this.id)
             if (this.id == "totalNumberOfPassengers") {
                 document.getElementById("arrow").classList.remove("invisibleArrow");
             }
@@ -266,8 +265,9 @@ document.getElementById("login").addEventListener("click", function() {
     document.getElementById("loginWindow").classList.remove("invisible02login");
 })
 document.getElementById("loginPasswordConfirmation").addEventListener("click", function() {
-    checkLogin();
-    displayPlane();
+    if (checkLogin() == true) {
+        displayPlane();
+    }
     numberOfAvailablePlaces = numberOfPassengers();
 });
 
@@ -301,15 +301,17 @@ function checkLogin() {
             
             setInterval(timeToLogOut, 1000);
             setTimeout(sessionTimer, sessionTime * 1000);
-            return;
+            return loginvalidation;
 
         } else {
             loginvalidation = false;
+            
         }
     };
     if (loginvalidation === false) {
         alert("Incorrect login or password!");
     };
+    return loginvalidation;
 }
 
 
@@ -379,7 +381,6 @@ function displayPlane() {
 
     for (let item of document.getElementById("changeTariff").children) {
         if (item.value == selectedCabinClass) {
-            console.log(item);
             item.setAttribute("selected", "selected");
         }
     }
@@ -483,7 +484,6 @@ function toogleBookedSeatBeforeTreshold(item) {
             item.classList.add("bookedPlace")
             numberOfSelectedPlaces += 1;
         }
-        console.log(numberOfSelectedPlaces, numberOfAvailablePlaces);
         document.getElementById("dataSeatSummary").innerHTML = `Selected seats: ${numberOfSelectedPlaces} / ${numberOfAvailablePlaces}`;     
         document.getElementById("warningSeatSummary").classList.add("warningSeatSummary");
     }
@@ -635,7 +635,6 @@ function summary() {
     let baggageType = document.getElementById("selectLuggage");
     for (let bag in flight.baggage[0]) {
         if (bag == baggageType.value) {
-            console.log(flight.baggage[0][bag]);
             let pricePerBaggage = flight.baggage[0][bag];
             let baggagePrice = pricePerBaggage*totalLuggage;
             totalPrice += baggagePrice;
