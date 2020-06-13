@@ -1,9 +1,9 @@
-# sampleWebpack
+# DANE DO LOGOWANIA
 
+User 1
+login: jan_jan
+password: Jan123!
 
-brakujące:
-
--optymalizacja obrazków, 
--przenoszenie plików, 
--ESlint
--Stylelint
+User 2
+login: stef
+password: Stefan007.

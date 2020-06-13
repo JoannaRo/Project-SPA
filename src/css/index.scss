@@ -1,14 +1,14 @@
-$standardColorDark: #1d5235;
+$standardColorDark: #2a5247;
 $standardColorLight: #e3fff0;
 $standardColorMedium: #e0f336;
-$standardColorNavButtonHover: rgba(159,227,190,1);
+$standardColorNavButtonHover: rgba(149,222,202,1);
 $standardColorBackground: #f5f5f5;
-$standardColorNavInactive: #d4d4d4;
+$standardColorNavInactive: #d4d9d8;
 
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 $font-family: 'Raleway', sans-serif;
-$fontSizeOptimal: 62.5%;
+$fontSizeOptimal: 0.63rem;
 
 
 @mixin standardFontDarkColor {
@@ -81,11 +81,10 @@ margin: 0;
         flex-direction: column-reverse;
     }
     & .logoutButton {
-        width: 10vw;
         padding-right: 2vw;
-
+        width: auto;
         & #logout {
-            width: 10vw;
+            width: auto;
         }
     }
 }
@@ -109,7 +108,7 @@ margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6*$fontSizeOptimal;
+            font-size: 1.3*$fontSizeOptimal;
             &#summaryBar {
                 border-right: none;
                 box-shadow: none;
@@ -234,9 +233,11 @@ button {
 
 span.departureDate {
     z-index: 1;
+    opacity: 0.6;
 }
 span.returnDate {
     z-index: 1;
+    opacity: 0.6;
 }
 
 .mainInput {
@@ -277,7 +278,7 @@ span {
 
 ul.positionAbsolute {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
 }
 
 
@@ -497,6 +498,7 @@ ul.positionAbsolute {
     }
 }
 #tariff {
+    font-size: 1.2*$fontSizeOptimal;
     background-color: $standardColorNavInactive;
     display: flex;
     flex-direction: column;
@@ -514,6 +516,7 @@ ul.positionAbsolute {
 
 
 #luggage {
+    font-size: 1.2*$fontSizeOptimal;
     background-color: $standardColorNavInactive;
     display: flex;
     flex-direction: column;
@@ -586,7 +589,7 @@ ul.positionAbsolute {
     border: 1px solid $standardColorMedium;
     border-radius: 10px;
     width: 80vw;
-    height: 20vh;
+    height: 35vh;
     padding: 2vh 0;
     & > * {
         width: 40vw;
@@ -597,6 +600,10 @@ ul.positionAbsolute {
 
 
 @media screen and (max-width: 680px) {
+
+    #navBar > * {
+        font-size: $fontSizeOptimal;
+    }
 
     .mainContent {
         background-color: $standardColorBackground;
@@ -638,7 +645,8 @@ ul.positionAbsolute {
                 width: 77vw;
             }
             & .loginWindow {
-                margin: 65vh 25vw;
+                top: 70vh;
+                right: -16vw;
             }
         } 
         & .page03 {
