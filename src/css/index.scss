@@ -178,14 +178,15 @@ button {
 
 .smallButton {
     @include mainButton;
-    width: 3vw;
+    width: 5vw;
     height: 5vh;
+    padding: 0;
 }
 
 
 
 .page00 {
-    background-image: url("/dest/assets/img/background.jpg");
+    background-image: url("./dest/assets/img/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 80vh;
@@ -295,6 +296,16 @@ ul.positionAbsolute {
         background-color: rgba(159,227,190,0.9);
         cursor: pointer;
     }
+}
+
+.fa-chevron-up {
+    position: absolute;
+    top: 4vh;
+    right: 5vw;
+    color: $standardColorDark;
+    text-shadow: 1px 1px yellow;
+    cursor: none;
+
 }
 
 
@@ -598,9 +609,9 @@ ul.positionAbsolute {
                 width: 80vw;
             }
             & .smallButton {
-                @include mainButton; width: 3vw; height: 5vh;
+                @include mainButton; width: 10vw; height: 5vh;
             }
-            & .smallInput { @include input; width: 3vw; height: 5vh; cursor: none;
+            & .smallInput { @include input; width: 10vw; height: 5vh; cursor: none;
             }
         }
 
@@ -658,7 +669,7 @@ li {
 }
 
 
-.invisibleNavBar, .invisibleLogout, .invisible00, .invisible01, .invisible02, .invisible02login, .invisible02seatReservation, .invisible03, .invisible04 {
+.invisibleNavBar, .invisibleLogout, .invisible00, .invisible01, .invisibleArrow, .invisible02, .invisible02login, .invisible02seatReservation, .invisible03, .invisible04 {
     display: none;
 }
 

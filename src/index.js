@@ -25,11 +25,16 @@ inputHTML.forEach(function(item) {
         if (this.parentNode.parentNode.classList.contains("invisible")) {
             this.parentNode.parentNode.classList.remove("invisible");
             this.parentNode.parentNode.classList.add("visible");
+            console.log(this.id)
+            if (this.id == "totalNumberOfPassengers") {
+                document.getElementById("arrow").classList.remove("invisibleArrow");
+            }
         }   
         else if (this.parentNode.parentNode.classList.contains("visible")) {
             this.parentNode.parentNode.classList.remove("visible");
             this.parentNode.parentNode.classList.add("invisible");
             if (this.parentNode.parentNode.classList.contains("totalNumOfPassengers")) {
+                document.getElementById("arrow").classList.add("invisibleArrow");
                 var total = numberOfPassengers();
                     if (total <= 9) {
                         this.setAttribute("value", "No. of passengers: " + total);
@@ -50,9 +55,6 @@ function numberOfPassengers() {
 }
 
 
-// <span onclick="this.parentNode.style.display = 'none';" class="closebtn">&times;</span>
-// <p>To close this container, click on the X symbol to the right.</p>
-// </div>
 
 //pobierane sa ul i dla każdego ul sprawdzamy czy kliknięte, jeśli tak pobierane są li danego ul. Na wszystkich li poza pierwszym[0]gdzie mamy inputa, wykonywana jest funkcja która sprawdza które li zostalo kliknięte i jego wartość ustawia w value inputa. Nie dotyczy to li z klasą 'passengers'.
 var ulHTML = Array.from(document.getElementsByTagName("ul"));
@@ -129,7 +131,6 @@ searchBtn.addEventListener("click", function() {
             var depDate = new Date(document.getElementById("departureDate").value);
             var retDate = new Date(document.getElementById("returnDate").value);
             if (depDate > retDate) {
-//                console.log("Data powrotu jest przed datą wylotu.")
                 item.classList.add("searchBtnError");
                 valid = false;
             } else {
@@ -252,18 +253,6 @@ function searchingResult() {
     for (let field of priceArray) {
         field.innerHTML += `${pricePerPerson} EUR`;
     }
-
-            /* 
-                var obj = {
-                    "pole": {"data": 1},
-                    "tablica": [2, 3]
-                }
-                dla obiektu można dostać się przez . na przykład obj.pole.data -> 1
-                dla tablic jest obj.tablica[0] -> 2 lub obj.tablica[1] -> 3 
-                w JS można do obiektów też odwołać się za pomocą operatora tablicy, podając nazwę pola jako klucz
-                obj["pole"]["data"] -> 1 
-                .aaa = ["aaa"]
-            */
 }
     
 
@@ -291,8 +280,6 @@ function sessionTimer() {
     sessionStorage.clear();
     location.reload();
 }
-
-
 
 
 function checkLogin() {
@@ -326,7 +313,7 @@ function checkLogin() {
 }
 
 
-const sessionTime = 60*9;
+const sessionTime = 60*3;
 
 if (sessionStorage.length != 0) {
     document.getElementById("userData").innerHTML += `${sessionStorage.name} ${sessionStorage.forname}`;
@@ -379,7 +366,7 @@ var planes = {
 
 
 
-//wyswietli odpowiedni samolot w zaleznosci od tego jaki przelot wybrany - zaimportowac w js odpowiednie 2 pliki
+//wyswietli odpowiedni samolot w zaleznosci od tego jaki przelot wybrany 
 //odblokuje miejsca w odpowieniej klasie, zalezy jaka wybrana
 function displayPlane() {
     let flight = getFlight();
